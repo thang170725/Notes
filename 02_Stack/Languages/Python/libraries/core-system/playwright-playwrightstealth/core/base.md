@@ -1,3 +1,13 @@
+- [Set up](#set-up)
+- [gencode](#gencode)
+  - [Mở firefox và vào Google](#mở-firefox-và-vào-google)
+- [mở web bằng profile thật](#mở-web-bằng-profile-thật)
+
+---
+
+```bash
+Để hiểu cách hoạt động của Playwright một cách đơn giản nhất, bạn có thể tưởng tượng nó như một người dùng thật: Mở trình duyệt -> Đợi trang hiện ra -> Tìm thứ mình cần -> Lấy thông tin.
+```
 # Set up
 ```bash
 pip install playwright

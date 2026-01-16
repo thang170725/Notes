@@ -18,7 +18,7 @@
 # các ký tự Regex cơ bản cần nhớ
 ```bash
 .   :Bất kỳ ký tự nào (trừ dòng mới)	a.c khớp với "abc", "a1c"
-\d  :Bất kỳ chữ số nào (0-9)	\d\d khớp với "12", "99"
+\d          :Bất kỳ chữ số nào (0-9)	\d\d khớp với "12", "99"
 \w	:Chữ cái, chữ số và dấu gạch dưới	\w+ khớp với "Python_3"
 \s	:Khoảng trắng (space, tab, newline)	\s+ khớp với các khoảng trống
 \S  :không phải khoảng trắng
@@ -35,13 +35,6 @@ a?	        :Lặp lại 0 hoặc 1 lần ('a', 'aa')
 
 # .search()
 Tìm vị trí đầu tiên khớp pattern. Dùng khi: Cần kiểm tra có tồn tại hay không. Không cần tất cả kết quả.
-
-# .match()
-Chỉ match ở đầu chuỗi.
-```python
-re.match(r"\d+", "123abc")   # match
-re.match(r"\d+", "abc123")   # None
-```
 
 # .sub()
 Thay thế chuỗi. 

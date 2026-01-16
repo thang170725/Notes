@@ -11,7 +11,7 @@
   + Code rõ ràng
 ```
 
-# page.locator() & locator.click() & locator.fill() & locator.count()
+# page.locator() & locator.click() & locator.fill()
 ## search google
 ```python
 from playwright.sync_api import sync_playwright

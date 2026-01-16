@@ -1,28 +1,6 @@
-Xử lý file 
-Open() & .close()
-Để mở file và đóng file
-Cú pháp: 
-open(‘data.txt’, ‘w’, encoding=’utf8’)
-    • r – Đọc – Giá trị mặc định. Mở tệp để đọc, báo lỗi nếu tệp không tồn tại.
-    • a – Thêm – Mở tệp để thêm, tạo tệp nếu tệp không tồn tại. Thêm vào cuối file.
-    • w – Ghi – Mở tệp để ghi, tạo tệp nếu tệp không tồn tại. Ghi đè nếu file có nội dung trước đó.
-    • t – Văn bản – Giá trị mặc định. Chế độ văn bản.
-    • b – Nhị phân – Chế độ nhị phân (Ví dụ: hình ảnh).
 
-.write()
-Để ghi vào một file.
-Cú pháp:
-# Tại file Text.txt có nội dung: Hello world
 
-txt = open("E:\\Python\Text.txt", "wt")
-txt.write("i am from VietNam")
-i am from VietNam
-.name
-Trả về tên của file đang được mở.
-Cú pháp:
-    txt = open("D:\\workspace\Python_box\\a.txt", "rt")
-    print(txt.name)
-D:\workspace\Python_box\a.txt
+
 .mode
 Trả về chế độ mode đang được mở.
 Cú pháp:
@@ -30,48 +8,9 @@ Cú pháp:
     print(txt.mode)
 rt
 
-With … as
-    • with dùng để quản lý tài nguyên tự động:
-        ◦ Tự mở → tự đóng (file, database, network, lock…)
-        ◦ Tự giải phóng tài nguyên kể cả khi code bị lỗi
-        ◦ Không cần viết try / finally
-    • Nó hoạt động dựa trên giao thức context manager:
-        ◦ __enter__()
-        ◦ __exit__()
-Cú pháp:
-f = open("data.txt", "w")
-f.write("hello")
-f.close()  # nếu quên close → rò rỉ tài nguyên
-Nếu code bị lỗi trước khi close() → file không được đóng.
-with open("data.txt", "w") as f:
-    f.write("hello world")
-File tự đóng dù có lỗi trong block
-Code gọn, sạch
-with open("data.txt", "r", encoding="utf8") as f:
-    content = f.read()
-    print(content)
-# Khi block with kết thúc → file tự đóng.
-with open("input.txt") as inp, open("output.txt", "w") as out:
-    for line in inp:
-        out.write(line.upper())
-# Rất tiện để xử lý nhiều file.
 
-isinstance()
-Trả về true nếu đối tượng được chỉ định thuộc loại được chỉ định, nếu không thì trả về false.
-Cú pháp: isinstance(object, type)
-x = isinstance("Hello", (str, float, int, str, list, dict, tuple))
-print(x)
-True
-id()
-Để xem địa chỉ id của một biến trong bộ nhớ.
-Cú pháp: id(<variable>)
-Ép kiểu
-Để ép từ một kiểu bất kỳ sang kiểu int (nếu ép được). Nếu biến cần ép không phải là số thì sẽ bị lỗi.
-Cú pháp: int(<variable>)
-a = "10"
-b = int(a)
-print(type(b))
-<class 'int'>
+
+
 Bài tập
 Chuyển 0 về cuối mảng bằng two pointer
 def move0(li):
@@ -104,62 +43,7 @@ Kiểm tra số n = 11363 có phải số nguyên tố hay không
     3. (mod n) = (mod 11363)
 Bằng Hàm bình thường
 Output: 6
-def UCLN(n1,n2):
-    result = 1
-    # xử lý riêng trường hợp 2 số đó chia hết cho 2 (chẵn)
-    while n1 % 2 == 0  and n2 % 2 == 0:
-        n1 //= 2
-        n2 //= 2
-        result *= 2
-    # xử lý các trường hợp còn lại (lẻ)
-    for i in range(3, min(n1,n2)+1, 2):
-        while n1 % i == 0 and n2 % i == 0:
-            n1 /= i
-            n2 /= i
-            result *= i
-    return result
-def main():
-    print(UCLN(12, 18))
-main()
 
-Cải tiến code:
-def UCLN(n1,n2):
-    while n2 != 0:
-        r = n1 % n2
-        n1 = n2
-        n2 = r
-    return n1
-def main():
-    print(UCLN(12, 18))
-main()
-
-
-Bằng hàm đệ quy
-Output: 2
-def UCLN(n1,n2,result = 1):
-    if(n1 == 1 or n2 == 1): return 1
-    # xử lý riêng trường hợp 2 số đó chia hết cho 2 (chẵn)
-    while n1 % 2 == 0  and n2 % 2 == 0:
-        return UCLN(n1//2, n2//2, result*2)
-    # xử lý các trường hợp còn lại (lẻ)
-    i = 3
-    while i <= min(n1,n2):
-        if n1 % i == 0 and n2 % i == 0:
-            return UCLN(n1//i, n2//i, result*i)
-        i += 2
-    return result
-def main():
-    print(UCLN(22, 18))
-main()
-
-Cải tiến code:
-def UCLN(n1,n2):
-    if n2 == 0:
-        return n1
-    return UCLN(n2, n1 % n2)
-def main():
-    print(UCLN(22, 18))
-main()
 
 Tính a^b mod n
 def mod_pow(a, b, n):

@@ -1,0 +1,20 @@
+# open() & .close()
+```bash
+Để mở file và đóng file.
+```
+**Syn**
+```bash
+open(‘data.txt’, ‘w’, encoding=’utf8’)
+    + r – Đọc – Giá trị mặc định. Mở tệp để đọc, báo lỗi nếu tệp không tồn tại.
+    + a – Thêm – Mở tệp để thêm, tạo tệp nếu tệp không tồn tại. Thêm vào cuối file.
+    + w – Ghi – Mở tệp để ghi, tạo tệp nếu tệp không tồn tại. Ghi đè nếu file có nội dung trước đó.
+    + t – Văn bản – Giá trị mặc định. Chế độ văn bản.
+    + b – Nhị phân – Chế độ nhị phân (Ví dụ: hình ảnh).
+```
+
+.name
+Trả về tên của file đang được mở.
+Cú pháp:
+    txt = open("D:\\workspace\Python_box\\a.txt", "rt")
+    print(txt.name)
+D:\workspace\Python_box\a.txt

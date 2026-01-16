@@ -140,10 +140,6 @@ Cú pháp: <variable>.isspace()
 isprintable()
 Trả về Tue nếu tất cả các ký tự trong chuỗi đều có thể in được.
 Cú pháp: <variable>.isprintable()
-isdigit()
-Kiểm tra xem có phải kiểu số không. Trả về true false.
-Cú pháp:
-<variable>.isdigit()
 casefold()
 Tương tự như phương thức lower(), nhưng phương thức casefold() mạnh hơn, tích cực hơn, nghĩa là nó sẽ chuyển đổi nhiều ký tự thành chữ thường hơn và sẽ tìm thấy nhiều kết quả khớp hơn khi so sánh hai chuỗi và cả hai đều được chuyển đổi được bằng phương thức casefold().
 Cú pháp: <variable>.casefold
