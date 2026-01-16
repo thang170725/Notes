@@ -19,32 +19,8 @@ mydict = dict(thisdict)
 print(mydict) # {'brand': 'Ford', 'model': 'Mustang', 'year': 1964}
 ```
 
-Del
-Để xóa cặp key: value trong dictionary.
-Cú pháp: 
-del name[key]
-thisdict =	{
-  "brand": "Ford",
-  "model": "Mustang",
-  "year": 1964
-}
-del thisdict["model"]
-print(thisdict)
-{'brand': 'Ford', 'year': 1964}
-.get()
-Để trả về value của một key nào đó.
-Cú pháp: 
-<variable>.get(<key>, default)
-    • Nếu key chưa có thì trả về giá trị defaule
-dir = dict(name='John', age=25, city='New York')
-print(dir.get('name'))
-John
-labels = ['no', 'no']
-counts = {}
-for label in labels:
-    counts[label] = counts.get(label, 0) + 1 
-print(counts)
-{'no': 2}
+
+
 .Keys()
 Để lấy ra tên các key.
 Cú pháp:

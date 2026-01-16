@@ -20,18 +20,7 @@
 # char
 Để xử lý với ký tự.
 
-# ord()
-Để lấy giá trị Unicode | ASCII của một ký tự nào đó.
-**Cú pháp**
-```text 
-ord(<variable>)
-```
-**Ex**
-```python
-a = ord("a")
-b = ord("1")
-print(a, b) # 97 49
-```
+
 
 # str()
 **Cú pháp** 
@@ -52,18 +41,7 @@ a = "le duc thang"
 print("thang" not in a) # False
 ```
 
-## .count()
-Đếm xem một ký tự nào đó xuất hiện bao nhiêu lần.
-**Cú pháp**
-```text
-<variable>.count(substring, start=, end=)
-```
 
-**Ex**
-```python
-a = "le duc thang ne"
-print(a.count("e"))
-```
 
 ## .title() & .istitle()
 Viết hoa và kiểm tất cả ký tự đầu trong một chuỗi.
@@ -75,23 +53,9 @@ print(a.title()) # Hello World, I Am From Vietnam
 ## .upper() & .lower() & .isupper() & .islower()
 Viết hoa, viết thường và kiểm tra tất cả các ký tự có trong một chuỗi.
 
-## .startswith() & .endswith()
-Kiểm tra xem chuỗi có bắt đầu, kết thúc bằng một chuỗi hay một ký tự nào đó không.
-```python
-a = "Viet Nam"
-print(a.startswith("Viet")) # True
-print(a.endswith("nam"))
+
 ```
 
-## .find() & .rfind()
-Tìm chuỗi bên trong chuỗi.
-**Ex**
-```python
-a = "i am a programming"
-print(a.find("a")) # 2
-str = 'le duc thang ne ne'
-print(str.rfind('e')) # 17
-```
 
 
 

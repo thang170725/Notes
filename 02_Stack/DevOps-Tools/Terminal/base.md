@@ -57,8 +57,7 @@ ffmpeg -i dance_korea.mp4 -c:v libx264 -c:a aac output.mp4 # thường xuất hi
 2. sudo apt install ./google.deb
 ```
 # Tìm & truy cập
-cd
-Xem
+
 Ls
     • ls -r: Hiển thị tất cả các file trong các thư mục con.
     • ls -a: Hiển thị các file ẩn.
@@ -72,22 +71,6 @@ cat file.text
 
 
 # Tạo
-
-## mkdir
-Tạo ra thư mục
-**Syn**
-```bash
-mkdir git_test
-```
-## touch
-```bash
-touch index.html (Tao một file tên là index.html)
-```
-
-# Xóa
-
-## clear
-Xóa hết các dòng lệnh
 
 ## rmdir a
 xóa thư mục a, thư mục a phải là thư mục trống.

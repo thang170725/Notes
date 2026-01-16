@@ -1,0 +1,33 @@
+# Select
+Dùng để xem dữ liệu trong bảng.
+```bash
+SELECT * FROM Students;
+```
+
+# Hiển thị nhiều field của nhiều bảng
+**Ex1**
+```sql
+SELECT
+    s.studentId,
+    s.fullNameStudent,
+    s.major,
+    s.className,
+    u.email,
+    u.role
+FROM Students s
+JOIN Users u ON s.userId = u.userId;
+```
+
+# Hiển thị nhiều field của nhiều bảng có điều kiện
+```sql
+SELECT
+    c.courseName,
+    s.fullNameStudent,
+    t.fullNameTeacher,
+    t.department
+FROM Courses c
+JOIN Students s ON c.studentId = s.studentId
+JOIN Teachers t ON c.teacherId = t.teacherId;
+Xem danh sách gắn với một điều kiện nào đó:
+SELECT * FROM Courses WHERE courseId = '2';
+```

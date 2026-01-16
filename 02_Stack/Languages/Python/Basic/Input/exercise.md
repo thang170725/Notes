@@ -1,5 +1,7 @@
-- [input()](#input)
-  - [Nhập ma trận (nxm)](#nhập-ma-trận-nxm)
+- [Nhập tên (Dữ liệu dạng chữ)](#nhập-tên-dữ-liệu-dạng-chữ)
+- [Nhập số và thực hiện phép tính (Ép kiểu)](#nhập-số-và-thực-hiện-phép-tính-ép-kiểu)
+- [Nhập nhiều giá trị trên một dòng](#nhập-nhiều-giá-trị-trên-một-dòng)
+- [Nhập ma trận (nxm)](#nhập-ma-trận-nxm)
 
 ---
 
