@@ -1,35 +1,6 @@
-- [char](#char)
-- [ord()](#ord)
-- [str()](#str)
-- [len()](#len)
-- [in \& not in](#in--not-in)
-  - [.count()](#count)
-  - [.title() \& .istitle()](#title--istitle)
-  - [.upper() \& .lower() \& .isupper() \& .islower()](#upper--lower--isupper--islower)
-  - [.startswith() \& .endswith()](#startswith--endswith)
-  - [.find() \& .rfind()](#find--rfind)
-  - [.strip() \& .rstrip() \& .lstrip()](#strip--rstrip--lstrip)
-  - [.replace()](#replace)
-- [case 1](#case-1)
-- [case 2](#case-2)
-- [case 3](#case-3)
-- [case 4](#case-4)
 
 
 
-# char
-Để xử lý với ký tự.
-
-
-
-# str()
-**Cú pháp** 
-```text
-str(n)
-```
-
-# len()
-Lấy ra độ dài của chuỗi.
 
 # in & not in
 Kiểm tra chuỗi này có nằm trong chuỗi kia hay không.
@@ -50,7 +21,7 @@ a = "hello world, i am from vietnam"
 print(a.title()) # Hello World, I Am From Vietnam
 ```
 
-## .upper() & .lower() & .isupper() & .islower()
+ .isupper() & .islower()
 Viết hoa, viết thường và kiểm tra tất cả các ký tự có trong một chuỗi.
 
 

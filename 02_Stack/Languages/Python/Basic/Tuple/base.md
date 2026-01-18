@@ -16,26 +16,7 @@ print(type(days))
 # <class 'tuple'>
 ```
 
-Tuple()
-Để ép từ một kiểu nào đó sang tuple.
-Cú pháp: 
-tuple(<variable>)
 
-
-Allow Duplicates
-Tuple cho phép các mục có thể cùng giá trị.
-days = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday")
-print(days)
-('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday')
-
-Change Tuple Values
-Vì tuple khi khởi tạo không thể thay đổi giá trị nên cần phải sử dụng một thủ thuật khác.
-x = ("apple", "banana", "cherry")
-y = list(x)
-y[1] = "kiwi"
-x = tuple(y)
-print(x)
-("apple", "kiwi", "cherry")
 Add Items
 Để thêm một phần tử nào đó vào tuple. Cần phải chuyển sang kiểu dữ liệu list rồi mới thêm.
 Cú pháp: <variable>.append(value)

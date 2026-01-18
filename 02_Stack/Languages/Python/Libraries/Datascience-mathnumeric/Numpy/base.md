@@ -1,40 +1,7 @@
+```bash
 - Là thư viện toán học, tính toán mạnh về mảng nhiều chiều, vector. 
 - pip install numpy. import numpy as np
-
-# __version__
-Để kiểm tra version của thư viện numpy.
-Cú pháp:
-import numpy as np
-print(np.__version__)
-2.2.3
-
-# Array()
-Để tạo mảng
-**Cú pháp**
-```text
-arr = np.array([1,2,3,4,5], dtype=float)
 ```
-
-# .dtype
-Trả về kiểu dữ liệu của mảng
-**Ex**
-```python
-arr = np.array([1.2, 2, 3, 4])
-print(arr.dtype) # Float64
-
-arr = np.array([1, 2, 3, 4], dtype="S")
-print(arr[0] + arr[1])
-print(arr.dtype) # b'12'
-
-arr = np.array([1, 2, 3, 4], dtype='i4') # i4 là kiểu dữ liệu integer có kích thước 4 bytes
-print(arr)
-print(arr.dtype)
-[1 2 3 4]
-int32
-```
-
-# .Shape & .shape() & .reshape()
-Kiểm tra kích thước và thay đổi kích thước.
 
 # .ndim
 Trả về một số nguyên cho chúng ta biết mảng có bao nhiêu chiều.
@@ -43,16 +10,7 @@ Trả về một số nguyên cho chúng ta biết mảng có bao nhiêu chiều
 arr = np.array((1,2,3))
 print(arr.ndim) # 1
 ```
-# max() & .max() & min() & .min()
-Dùng để tìm số lớn nhất và số bé nhất trong mảng numpy.
-```python
-import numpy as np
 
-a = np.array([1,2,3,4])
-print(a.max()) # 4
-print(np.max(a)) # 4
-# cách sử dụng tương tự cho min và .min()
-```
 
 # .tolist()
 Để chuyển từ mảng numpy sang mảng thường.
@@ -61,31 +19,7 @@ print(np.max(a)) # 4
 arr.tolist()
 ```
 
-.astype()
-Dùng để chuyển kiểu dữ liệu của mảng sang kiểu khác.
 
-Cú pháp:
-array.astype(dtype)
-    • dtype: là kiểu dữ liệu bạn muốn chuyển sang, ví dụ: int, float, bool, str, np.int32, np.float64, …
-    • astype() tạo ra một mảng mới, không làm thay đổi mảng gốc
-arr = np.array([1.1, 2.1, 3.1])
-newarr = arr.astype('i')
-print(newarr)
-print(newarr.dtype)
-[1 2 3]
-int32
-arr = np.array([1.1, 2.1, 3.1])
-newarr = arr.astype(int)
-print(newarr)
-print(newarr.dtype)
-[1 2 3]
-int64
-arr = np.array([1, 0, 3])
-newarr = arr.astype(bool)
-print(newarr)
-print(newarr.dtype)
-[ True False True]
-bool
 .copy()
 Để sao chép một mảng.
 Cú pháp:
@@ -150,18 +84,6 @@ arr2 = np.asarray(arr1)
 print(arr1 is arr2)  # True -> cùng vùng nhớ
 np.asarray() không tạo copy → tiết kiệm bộ nhớ.
 
-Size()
-Trả về số phần tử.
-Cú pháp:
-arr = np.array([5,10,15,20,25])
-print(np.size(arr)) # 5
-zeros()
-Tạo mảng có kích thước có sẵn.
-Cú pháp:
-out = np.zeros(
-   (out_h, out_w, chanels),
-   dtype=np.uint8
-)
 zeros_like()
 Để tạo một mảng mới có cùng hình dạng (shape) và kiểu dữ liệu (dtype) với mảng gốc, nhưng tất cả các phần tử đều bằng 0.
 Cú pháp:
@@ -203,10 +125,7 @@ a = np.pi
 print(a)
 3.141592653589793
 
-Sum()
-Để tính tổng. Trả về một số thực hoặc nguyên
-Cú pháp:
-a = np.sum(inside)
+
 Clip()
 Để giới hạn giá trị của các phần tử trong mảng trong một khoảng nhất định.
 Cú pháp:

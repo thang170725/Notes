@@ -1,3 +1,4 @@
+```bash
 /Personal-Knowledge-Base
 ├── 01_Fundamentals/
 │   ├── Computer-Science/
@@ -14,3 +15,13 @@
 └── 03_Domains/
     └── Security/                 <-- NƠI KẾT NỐI
         └── web-vulnerabilities.md # Note về XSS (đánh cắp cookie), CSRF
+```
+
+Ngày 1
+150 directories, 314 files
+(.venv) thang@PhatToNhuLai:~/workspace/dev-notes$ 
+ *  History restored 
+
+thang@PhatToNhuLai:~/workspace/dev-notes$ du -sh
+5,7M    .
+thang@PhatToNhuLai:~/workspace/dev-notes$ 

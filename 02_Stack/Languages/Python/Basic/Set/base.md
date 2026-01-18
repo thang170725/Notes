@@ -37,50 +37,8 @@ in
 mySet = {1,2,3,4,5,6,7,8,9}
 print(11 in mySet)
 False
-add()
-Để thêm một phần tử vào trong một set. 
-Cú pháp: <variable>.add(value)
-thisset = {"apple", "banana", "cherry"}
-thisset.add("orange")
-print(thisset)
-{'apple', 'cherry', 'banana', 'orange'}
-update()
-Để thêm các mục từ tập hợp khác vào tập hợp hiện tại.
-Cú pháp:  <variable>.update(value)
-mySet= {"apple"}
-orther = {"banana"}
-mySet.update(orther)
-print(mySet)
-{'apple', 'banana'}
-union()
-Trả về một set mới với các giá trị phần tử là 2 set cũ.
-Cú pháp:
-    • <variable>.union(<variable1>, <variable2>, …)
-    • <variable1> | <variable2> | …
-mySet= {"apple", "banana", }
-orther = {"orange", "Lemon", "Passion"}
-Set = mySet.union(orther)
-print(Set)
-{'banana', 'apple', 'orange', 'Passion', 'Lemon'}
-mySet= {"apple", "banana", }
-orther = {"orange", "Lemon", "Passion"}
-Set = mySet | orther
-print(Set)
-{'Passion', 'orange', 'Lemon', 'banana', 'apple'}
-remove()
-Để xóa một phần tử ra khỏi set. Nếu không tìm thấy phần tử cần xóa từ ném ra lỗi.
-Cú pháp: <variable>.remove(value)
-mySet= {"apple", "banana"}
-mySet.remove("banana")
-print(mySet)
-{'apple'}
-discard()
-Để xóa một phần tử ra khỏi set. Nếu không tìm thấy phần tử cần xóa thì bỏ qua lệnh này.
-Cú pháp: <variable>.discard(value)
-mySet= {"apple", "banana"}
-mySet.discard("banana")
-print(mySet)
-{'apple'}
+
+
 pop()
 Bạn cũng có thể sử dụng phương thức pop để xóa một mục, nhưng phương thức này sẽ xóa một mục ngẫu nhiên, do đó bạn không thể chắc chắn mục nào sẽ bị xóa.
 Cú pháp: <variable>.pop()

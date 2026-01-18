@@ -1,15 +1,3 @@
-- [Xem](#xem)
-  - [du](#du)
-  - [free](#free)
-  - [df -h](#df--h)
-  - [Xem thời gian khởi động máy](#xem-thời-gian-khởi-động-máy)
-- [Install \& run .deb](#install--run-deb)
-- [Tìm \& truy cập](#tìm--truy-cập)
-- [Tạo](#tạo)
-
----
-
-
 ## Xem thời gian khởi động máy
 uptime -s
 thang@PhatToNhuLai:~$ uptime -s
@@ -33,35 +21,11 @@ Tắt repeat hoàn toàn, nhấn phím sẽ không lặp.
 xset r on
 Mở repeat.
 Video
-Tải video
-sudo apt update
-sudo apt install yt-dlp -y
-yt-dlp "https://www.youtube.com/watch?v=ABC123"
-yt-dlp -f best "https://www.youtube.com/watch?v=ABC123"
-yt-dlp -f bestaudio "https://www.youtube.com/watch?v=ABC123" -o "%(title)s.%(ext)s"
-yt-dlp -x --audio-format mp3 "https://www.youtube.com/watch?v=ABC123"
-yt-dlp -f best "https://www.youtube.com/playlist?list=PLxxxx"
-yt-dlp -o "%(title)s.%(ext)s" "https://www.youtube.com/watch?v=ABC123"
-python -m yt_dlp "https://www.youtube.com/watch?v=4ar4bwuJwLo"
-echo 'alias ytd="python -m yt_dlp --merge-output-format mp4"' >> ~/.bashrc
-source ~/.bashrc
-ytd https://www.youtube.com/shorts/4ar4bwuJwLo
-
-Fix lỗi av1
-ffmpeg -i dance_korea.mp4 -c:v libx264 -c:a aac output.mp4 # thường xuất hiện trên ubuntu
 
 
-# Install & run .deb
-```bash
-1. sudo apt update
-2. sudo apt install ./google.deb
-```
-# Tìm & truy cập
 
-Ls
-    • ls -r: Hiển thị tất cả các file trong các thư mục con.
-    • ls -a: Hiển thị các file ẩn.
-    • ls -al: sẽ liệt kê các file và thư mục với thông tin chi tiết như quyền, kích thước, chủ sở hữu, …
+
+
 pwd
 Xem đường dẫn thư mục làm việc hiện tại.
 cat file.txt
@@ -69,8 +33,6 @@ Liệt kê nội dung của file.txt
 Cú pháp:
 cat file.text
 
-
-# Tạo
 
 ## rmdir a
 xóa thư mục a, thư mục a phải là thư mục trống.
@@ -200,8 +162,3 @@ Trả về danh sách các ổ phân vùng.
 Cú pháp:
     1. lsblk
     2. lsblk -f
-Mount ổ cứng
-    1. sudo apt install nfs-common
-    2. sudo apt install cifs-utils
-    3. sudo apt install ntfs-sg
-    4. sudo ntfsfix -b -d /dev/nvme1n1p4

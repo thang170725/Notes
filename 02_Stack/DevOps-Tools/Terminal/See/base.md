@@ -1,15 +1,8 @@
-- [du](#du)
 - [free](#free)
 - [df](#df)
 - [tree](#tree)
 
 ---
-
-# du
-Xem dung lương thư mục hoặc file
-```bash
-du -sh: xem dung lượng thư mục hiện tại
-```
 
 # free
 Lệnh này cho bạn cái nhìn tổng quan nhất về dung lượng RAM tổng, dung lượng đã dùng, còn trống và bộ nhớ đệm (cache).

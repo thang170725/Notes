@@ -270,35 +270,10 @@ Main/ master : tên của repo chính
 Merge/ rebase : kết hợp 2 nhánh
 Develop : tên của nhánh, lập trình viên
 Git –-help : hiển thị ra các câu lệnh hướng dẫn
-gitHub
-git config
-    1. –l (Xem toàn bộ thông tin cấu hình hiện tại)
-    2. git config –-global user.name “Le Duc Thang“ (Cấu hình tên của người dùng là Le Duc Thang)
-    3. git config –-global user.email “Le Duc Thang“ (Cấu hình email của người dùng là Le Duc Thang)
-    4. git config –-local user.name “Le Duc Thang“ (Cấu hình tên của người dùng là Le Duc Thang)
-    5. git config –-local user.email “Le Duc Thang“ (Cấu hình email của người dùng là Le Duc Thang)
-    6. git config –l -–global (Xem thông tin cấu hình của global)
-    7. git config –l –-local (Xem thông tin cấu hình của local)
-git clone 
-Lệnh này giúp bạn sao chép toàn bộ mã nguồn, lịch sử thay đổi, nhánh, commit, và tất cả các file trong dự án về máy tính để làm việc trực tiếp.
-Cú pháp:
-git clone https://github.com/thang1707/lesson1.git dev1 (Sao chép ma nguồn từ gitHub và thư mục dev1)
-git clone --branch khue --single-branch https://github.com/thang170725/elgamal.git (clone nhánh cụ thể về máy tính)
-git remote
-Dùng để kết nối môt repository git cục bộ (trên máy tính của bạn) với một repository từ xa (trên gitHub). giúp git push và git pull. Khi bạn khởi tạo một repository mới trên máy (git init), nó chưa biết liên kết với nơi nào để push code lên
-Dùng khi bạn đã có sẵn code trên máy và muốn đẩy dự án này lên gitHub.
-Cú pháp:
-    1. git remote -v (Xem remote hiện tại là gì)
-    2. git remote add origin https://github.com/thang1707/an_toan_bao_mat_tt.git
-    3. git remote set-url origin https://github.com/thang170725/elgamal.git (Khi bạn muốn dùng remote origin nhưng trỏ tới repo mới)
-git push
-Cú pháp:
-    1. git push origin cong (push code vào nhánh cong)
-git pull
-Lấy dữ liệu và hợp nhất (merge) những thay đổi đó vào nhánh hiện tại của bạn. Lệnh này là sự kết hợp của 2 lệnh git fetch (lấy các thay đổi từ kho lưu trữ từ xa) và git merge (hợp nhất các thay đổi vào nhánh hiện tại)
-Cú pháp:
-    1. git pull origin main (pull từ nhánh main)
-    2. git pull --no-rebase origin main
+
+
+
+
 git checkout
 Chuyển đổi từ nhánh này sang nhánh nhanh_1.
 Cú pháp:
@@ -319,17 +294,7 @@ git status
 Hiển thị trạng thái của kho lưu trữ.
 git merge B
  Gom nội dung của nhánh B vào nhánh A. Khi gom các nhánh lại với nhau rất dễ bị conflict (xung đột).
-Tạo một repository trên gitHub
-repository là một vùng lưu trữ các folder, file được gửi từ máy tính cá nhân lên gitHub.
-Khi tạo repository trên gitHub xong ta cần kết nối và đưa code lên repository lần đầu tiên, dưới đây là các bước thực hiện:
-    1. echo "# tri_tue_nhan_tao" >> README.md
-    2. git init
-    3. git add README.md
-    4. git commit -m "first commit"
-    5. git branch -M main
-    6. git remote add origin https://github.com/thang170725/tri_tue_nhan_tao.git
-    7. git push -u origin main
-Lưu ý: Cần sử dụng git config trước để tạo tên đăng nhập
+
 
 Phần 2: Cấu hình dự án bằng git
 git init

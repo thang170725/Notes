@@ -1,0 +1,3 @@
+.shape
+Trả về số lượng hàng cột có trong dataFrame, …
+print(df.shape)

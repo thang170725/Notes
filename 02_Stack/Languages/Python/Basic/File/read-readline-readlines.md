@@ -15,20 +15,31 @@ txt.close()
 ```
 
 # .readline()
+```bash
 Đọc nội dung file theo dòng. Chỉ đọc một dòng.
-Cú pháp: 
+```
+**Syn**
+```bash
 <variable>.readline()
-
+```
+**Ex**
+```python
 txt = open("E:\\Python\Text.txt", "rt")
-print(txt.readline())
+print(txt.readline()) # Hello
 txt.close()
-Hello
-.readlines()
+```
+
+# .readlines()
+```bash
 Tạo ra một mảng. Mỗi dòng trong file sẽ tương ứng với một phần tử trong mảng.
-Cú pháp: 
+```
+**Syn**
+```bash
 <variable>.readlines()
-
+```
+**Ex**
+```python
 txt = open("E:\\Python\Text.txt", "rt")
-print(txt.readlines())
+print(txt.readlines()) # ['Hello\n', 'My name is Thang\n', 'I am from VietNam']
 txt.close()
-['Hello\n', 'My name is Thang\n', 'I am from VietNam']
+```

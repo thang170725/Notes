@@ -2,6 +2,7 @@
 - [Nhập số và thực hiện phép tính (Ép kiểu)](#nhập-số-và-thực-hiện-phép-tính-ép-kiểu)
 - [Nhập nhiều giá trị trên một dòng](#nhập-nhiều-giá-trị-trên-một-dòng)
 - [Nhập ma trận (nxm)](#nhập-ma-trận-nxm)
+- [Tạo ra dict lưu tọa độ n điểm](#tạo-ra-dict-lưu-tọa-độ-n-điểm)
 
 ---
 
@@ -63,4 +64,33 @@ a = [list(map(int, input().split())) for _ in range(n)]
 
 for row in a:
     print(*row)
+```
+
+# Tạo ra dict lưu tọa độ n điểm
+**Topic**
+```bash
+Nhập vào tọa độ n điểm và lưu các tọa độ đó vào một dict
+```
+**Answer**
+```python
+n = int(input("Number of points: "))
+
+print("=== Ex: A(x1, y1) ====")
+coordinates = [input().strip() for _ in range(n)]
+
+local_coordinates = {}
+
+for c in coordinates:
+    name, rest = c.split("(", 1)
+    x, y = rest.rstrip(")").split(",")
+
+    local_coordinates[name.strip()] = (int(x), int(y))
+
+print(local_coordinates)
+
+# Number of points: 2
+# === Ex: A(x1, y1) ====
+# A(1,2)
+# B(3,6)
+# {'A': (1, 2), 'B': (3, 6)}
 ```
