@@ -11,7 +11,8 @@ from sqlalchemy import create_engine
 
 engine = create_engine(
     "dialect+driver://username:password@host:port/database",
-    **options
+    pool_recycle=,
+    echo=
 )
 
 - dialect	mysql, postgresql, sqlite, oracle
@@ -22,7 +23,7 @@ engine = create_engine(
 - port	    3306, 5432
 - database	test_db
 ```
-**Ex**
+**Ex1**
 ```python
 engine = create_engine(
     "mysql+pymysql://root:123456@localhost:3306/mydb",
@@ -31,7 +32,7 @@ engine = create_engine(
     max_overflow=10   # Số connection vượt pool
 )
 ```
-**Ex2**
+**Ex2: Connect db**
 ```python
 from sqlalchemy import create_engine
 

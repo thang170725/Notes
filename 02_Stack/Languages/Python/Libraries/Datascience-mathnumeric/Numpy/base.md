@@ -20,41 +20,8 @@ arr.tolist()
 ```
 
 
-.copy()
-Để sao chép một mảng.
-Cú pháp:
-arr = np.array([1, 2, 3, 4, 5])
-x = arr.copy()
-arr[0] = 42
-print(arr)
-print(x)
-[42 2 3 4 5]
-[1 2 3 4 5]
-.view()
-Tạo một chế độ xem focus vào mảng gốc.
-Cú pháp:
-arr = np.array([1, 2, 3, 4, 5])
-x = arr.view()
-arr[0] = 42
-print(arr)
-print(x)
-[42 2 3 4 5]
-[42 2 3 4 5]
-.flatten()
-Để “làm phẳng” (chuyển từ mảng nhiều chiều → mảng 1 chiều).
-Cú pháp:
-array.flatten(order='C')
-    • order='C': duyệt theo hàng (row-major order — mặc định).
-    • order='F': duyệt theo cột (column-major order — kiểu Fortran).
-arr = np.array([[1, 2, 3],
-                [4, 5, 6]])
 
-flat1 = arr.flatten(order='A')
-flat2 = arr.flatten(order='C')
-flat3 = arr.flatten(order='F')
-flat4 = arr.flatten(order='K')
-print(flat1, flat2, flat3, flat4)
-[1 2 3 4 5 6] [1 2 3 4 5 6] [1 4 2 5 3 6] [1 2 3 4 5 6]
+
 
 
 .ndmin
@@ -84,28 +51,8 @@ arr2 = np.asarray(arr1)
 print(arr1 is arr2)  # True -> cùng vùng nhớ
 np.asarray() không tạo copy → tiết kiệm bộ nhớ.
 
-zeros_like()
-Để tạo một mảng mới có cùng hình dạng (shape) và kiểu dữ liệu (dtype) với mảng gốc, nhưng tất cả các phần tử đều bằng 0.
-Cú pháp:
-np.zeros_like(a, dtype=None)
-    • a: mảng gốc muốn “bắt chước” shape và dtype.
-    • dtype: (tuỳ chọn) nếu muốn đổi kiểu dữ liệu, có thể truyền thêm vào.
-a = np.array([[1, 2, 3], [4, 5, 6]])
-b = np.zeros_like(a)
 
-print("a:\n", a)
-print("b:\n", b)
-a:
- [[1 2 3]
-  [4 5 6]]
-b:
- [[0 0 0]
-  [0 0 0]]
-Max() & min()
-Tìm giá trị lớn nhất hoặc nhỏ nhất trong mảng.
-Cú pháp:
-arr = np.array([5,10,15,20,25])
-print(np.max(arr)) # 25
+
 *
 Phép nhân từng phần tử.
 Cú pháp:
@@ -114,16 +61,7 @@ arr1 = np.array([[2, 3], [1,2]], dtype=float)
 print(arr*arr1)
 [[10. 30.]
  [ 1.  4.]]
-Power() & Sqrt()
-Để tính căn thức bậc 2.
-Cú pháp:
-a = np.sqrt(arr) hoặc a = np.power(arr, n)
-img = np.array(4)
-print(np.sqrt(img)) # 2.0
-Pi
-a = np.pi
-print(a)
-3.141592653589793
+
 
 
 Clip()
@@ -154,32 +92,9 @@ print(res)
 [[16 15 11]
  [ 7  7  6]
  [23 22 17]]
-Mean()
-Để tìm ra giá trị trung bình của một dãy số. 
-Cú pháp:
-Speed = [90, 105, 55, 60, 75]
-print(np.mean(speed))
-77.0
-Meadian()
-Là giá trị trung vị (giá trị ở giữa), sau khi bạn đã sắp xếp tất cả các giá trị. Giá trị trung vị có thể không có trong mảng
-Cú pháp:
-speed = [90, 105, 55, 60, 75]
-print(np.median(speed))
-75.0
-Std()
-Là độ lệnh chuẩn tổng thể
-Ví dụ:
-Tính độ lệch chuẩn tổng thể và độ lệch chuẩn mẫu của 5 số 12,34,45,70,86
-    1) Tính trung bình cộng: (12 + 34 + 45 + 70 + 86) / 5 = 49.4 
-    2) Tính phương sai mẫu: ((12-49.4)**2 + (34-49.4)**2 + (45-49.4)**2 + …) / (5-1) = 854.8 
-Tính phương sai tổng thể: ((12-49.4)**2 + (34-49.4)**2 + (45-49.4)**2 + …) / 5 = 683.84  
-    1) Tính độ lệch chuẩn của phương sai mẫu: np.sqrt(854.8)= 29.23696291
-       Tính độ lệch chuẩn của phương sai tổng thể: np.sqrt(683.84) = 26.15 
-Cú pháp:
-value = [12,34,45,70,86]    
-print(np.std(value)) # trả về độ lệch chuẩn tổng thế
-26.150334605889842
-Exp()
+
+
+
 Để tính e mũ n
 Cú pháp:
 np.exp(2) # e**2

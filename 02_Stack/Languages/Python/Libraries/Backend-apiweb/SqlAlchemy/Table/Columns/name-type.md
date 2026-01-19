@@ -1,3 +1,4 @@
+# name & type
 ```python
 from sqlalchemy import Table, MetaData
 
@@ -20,7 +21,6 @@ if __name__ == '__main__':
     for col in table.columns:
         print(col.name, col.type)
 
-# DB URL: mysql+pymysql://ai_user:ai123@localhost:3306/house_price_project
 # id INTEGER
 # id_districts INTEGER
 # price_total DECIMAL(15, 0)

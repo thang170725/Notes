@@ -1,3 +1,4 @@
+# columns
 **Ex**
 ```python
 from sqlalchemy import Table, MetaData
@@ -20,6 +21,5 @@ if __name__ == '__main__':
     table = load_table(engine, table_name='listings')
     print(table.columns)
 
-# DB URL: mysql+pymysql://ai_user:ai123@localhost:3306/house_price_project
 # ReadOnlyColumnCollection(listings.id, listings.id_districts, listings.price_total, listings.price_m2, listings.area, listings.location_lat, listings.location_long, listings.dist_to_center, listings.property_type, listings.legal_status, listings.bedrooms, listings.bathrooms, listings.floors, listings.orientation, listings.frontage_width, listings.alley_width, listings.source_url, listings.posted_date, listings.scraped_date, listings.market_trend_idx)
 ```

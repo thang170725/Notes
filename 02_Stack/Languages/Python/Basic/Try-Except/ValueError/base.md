@@ -10,15 +10,3 @@ while True:
         print("❌ Lỗi: phải nhập số nguyên")
 
 ```
-
-# raise ValueError()
-**Ex**
-```python
-def register(age: int):
-    if age < 18:
-        raise ValueError("Bạn chưa đủ 18 tuổi")
-    print("Running ...")
-register(15)
-
-# Chủ động ném ra lỗi và dừng chương trình
-```

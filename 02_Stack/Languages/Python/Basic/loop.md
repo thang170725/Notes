@@ -54,25 +54,4 @@ for index, fruit in enumerate(fruits):
 Trái cây thứ 1 là táo
 Trái cây thứ 2 là chuối
 Trái cây thứ 3 là cam
-Zip()
-names = ["Alice", "Bob", "Charlie"]
-ages = [25, 30, 35]
 
-# zip hai list lại với nhau
-combined = zip(names, ages)
-
-# zip trả về một iterator, nên dùng list() để xem kết quả
-print(list(combined))
-[('Alice', 25), ('Bob', 30), ('Charlie', 35)]
-for name, age in zip(names, ages):
-    print(f"{name} is {age} years old")
-Alice is 25 years old
-Bob is 30 years old
-Charlie is 35 years old
-cities = ["New York", "Paris", "Tokyo"]
-
-for name, age, city in zip(names, ages, cities):
-    print(f"{name}, {age}, lives in {city}")
-Alice, 25, lives in New York
-Bob, 30, lives in Paris
-Charlie, 35, lives in Tokyo
