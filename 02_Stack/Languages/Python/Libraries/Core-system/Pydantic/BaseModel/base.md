@@ -3,7 +3,7 @@
 - class nền của Pydantic, bạn kế thừa nó để tạo ra các “model dữ liệu”.
 - Cần from pydantic import BaseModel
 ```
-**Code đúng chuẩn**
+**Ex**
 ```python
 from pydantic import BaseModel
 from typing import List, Optional

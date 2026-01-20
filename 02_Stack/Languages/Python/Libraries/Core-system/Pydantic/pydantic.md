@@ -1,14 +1,9 @@
-- [BaseModel](#basemodel)
-  - [Bài tập](#bài-tập)
-    - [Quản lý thông tin điện thoại](#quản-lý-thông-tin-điện-thoại)
-- [Field](#field)
-- [EmailStr](#emailstr)
 - [@validator()](#validator)
 - [@field\_validator()](#field_validator)
-  - [Bài tập](#bài-tập-1)
+  - [Bài tập](#bài-tập)
     - [Demo](#demo)
 - [@model\_validator()](#model_validator)
-  - [Bài tập](#bài-tập-2)
+  - [Bài tập](#bài-tập-1)
     - [Demo](#demo-1)
 
 ---
@@ -17,22 +12,6 @@
 
 
 
-
-# @validator()
-Là hàm kiểm tra / chỉnh sửa dữ liệu trước khi model được tạo.
-**Ex**
-```python
-from pydantic import BaseModel, validator
-
-class User(BaseModel):
-    username: str
-
-    @validator("username")
-    def check_username(cls, v):
-        if len(v) < 3:
-            raise ValueError("username quá ngắn")
-        return v
-```
 
 # @field_validator()
 Là hàm kiểm tra hoặc biến đổi dữ liệu của MỘT FIELD trước hoặc sau khi Pydantic gán vào model

@@ -1,4 +1,47 @@
-# page.goto(url)
+- [.launch\_persistent\_context()](#launch_persistent_context)
+
+---
+
+**Sơ đồ**
+```bash
+browser
+ └── context (cookie, session riêng)
+      ├── page 1
+      ├── page 2  ← new_page
+      └── page 3
+```
+
+# .launch_persistent_context()
+```bash
+- Đây là cách sử dụng profile thật để chống bot.
+- Các website hiện đại đều có cơ chế chống bot vô cùng mạnh nên cần một số kỹ thuật mới có thể crawl dữ liệu thành công.
+```
+**Syn**
+```bash
+browser = p.chromium.launch_persistent_context(
+    user_data_dir="/home/thang/pw-chrome-profile",
+    headless=False,
+    args=[
+            "--disable-blink-features=AutomationControlled",
+            "--start-maximized"
+    ]
+)
+
+- args: dòng đầu để che navigator.webdriver, dòng 2 chỉ để mở cửa sổ to.
+```
+# .new_page()
+```bash
+- Trong Playwright Python, new_page dùng để mở một tab (page) mới trong cùng một browser context.
+```
+**Khi nào thì dùng new_page?**
+```bash
+- Website mở link sang tab mới
+- Test nhiều user / nhiều màn hình trong cùng session
+- So sánh dữ liệu giữa 2 trang
+- Popup / OAuth / Payment / External link
+```
+
+# page.goto()
 ```bash
 - Tác dụng: Điều hướng trình duyệt đến một trang web cụ thể.
 - Nó có các tham số (parameters) rất quan trọng để giúp bạn kiểm soát việc "Khi nào thì coi như trang web đã tải xong?".
@@ -36,4 +79,26 @@ async def main():
         await browser.close()
 
 asyncio.run(main())
+```
+
+
+**Ex**
+```python
+from playwright.async_api import Playwright, BrowserContext
+
+async def create_browser_context(
+    p: Playwright,
+    profile_dir: str = '/home/thang/pw-chrome-profile',
+    headless: bool = False
+ ) -> BrowserContext:
+    return await p.chromium.launch_persistent_context(
+        user_data_dir=profile_dir,
+        headless=False,
+        args=[
+            "--disable-blink-features=AutomationControlled",
+            "--disable-images",
+            "--disable-css",
+            "--start-maximized"
+        ]
+    )
 ```

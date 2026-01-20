@@ -165,13 +165,6 @@ print(c.zfill(10))
 00000hello
 welcome to the jungle
 000010.000
-reversed()
-Để đảo ngược chuỗi.
-Cú pháp: reversed(<variable>)
-a = "le duc thang ne"
-a = a[::-1]
-print(a)
-En hnght el
 Fomat()
 Định dạng các giá trị đã chỉ định và chèn chúng vào bên trong trình giữ chỗ của chuỗi. Trình giữ chỗ được định nghĩa bằng dấu ngoặc nhọn.
 Cú pháp:

@@ -16,6 +16,28 @@
     + Fetch all
     + Build DataFrame
 ```
+**Khi nào NÊN dùng read_sql?**
+```bash
+- NÊN:
+    + Làm data analysis
+    + Tool admin
+    + Export dữ liệu
+    + Notebook / script
+    + Báo cáo
+KHÔNG NÊN:
+    + API backend realtime
+    + CRUD business logic
+    + Query lớn streaming (vì load hết vào RAM)
+```
+**So sánh read_sql vs SQLAlchemy Core**
+```bash
+Tiêu chí	    read_sql	Core
+Output	        DataFrame	Row / Mapping
+Hiệu năng	    Trung bình	Cao
+Memory	        Load all	Có thể stream
+Dùng cho API	❌	        ✅
+Dùng cho report	✅	        ⚠️
+```
 **Syn**
 ```bash
 pandas.read_sql(
@@ -32,7 +54,7 @@ pandas.read_sql(
 - index_col	    : Cột làm index
 - parse_dates	: Parse cột ngày
 ```
-**Ex: Dùng SQL STRING (đơn giản nhất)**
+**Ex1: Dùng SQL STRING (đơn giản nhất)**
 ```python
 import pandas as pd
 
@@ -52,9 +74,8 @@ print(df)
 ...
 
 ```
-
-
-1. Ví dụ 2 – Bind parameter (RẤT QUAN TRỌNG)
+**Ex2: Bind parameter (RẤT QUAN TRỌNG)**
+```python
 query = """
 SELECT id, name
 FROM districts
@@ -71,11 +92,10 @@ df = pd.read_sql(
     }
 )
 
-
-✅ An toàn
-❌ Không inject được
-
-5. Ví dụ 3 – Dùng SQLAlchemy Table + select (chuẩn hơn)
+# An toàn
+```
+**Ex3: Dùng SQLAlchemy Table + select (chuẩn hơn)**
+```python
 from sqlalchemy import select
 import pandas as pd
 
@@ -95,10 +115,10 @@ df = pd.read_sql(stmt, con=engine)
 print(df.head())
 
 
-👉 read_sql nhận trực tiếp Select object
-👉 Không cần convert sang string
-
-6. Ví dụ 4 – Đặt index cho DataFrame
+# read_sql nhận trực tiếp Select object
+# Không cần convert sang string
+```
+1. Ví dụ 4 – Đặt index cho DataFrame
 df = pd.read_sql(
     "SELECT id, name FROM districts",
     con=engine,
@@ -119,76 +139,3 @@ df = pd.read_sql(
 
 
 👉 created_at thành datetime64[ns]
-
-8. Khi nào NÊN dùng read_sql?
-
-✅ NÊN:
-
-Làm data analysis
-
-Tool admin
-
-Export dữ liệu
-
-Notebook / script
-
-Báo cáo
-
-❌ KHÔNG NÊN:
-
-API backend realtime
-
-CRUD business logic
-
-Query lớn streaming (vì load hết vào RAM)
-
-9. So sánh read_sql vs SQLAlchemy Core
-Tiêu chí	read_sql	Core
-Output	DataFrame	Row / Mapping
-Hiệu năng	Trung bình	Cao
-Memory	Load all	Có thể stream
-Dùng cho API	❌	✅
-Dùng cho report	✅	⚠️
-10. Liên hệ với kiến trúc bạn đang xây
-
-Bạn đang có:
-
-DatabaseConnection → engine
-
-TableFactory → schema
-
-QueryBuilder → SQL
-
-👉 read_sql nằm trên cùng, dùng khi:
-
-Muốn lấy nhanh data
-
-Không cần repository
-
-Không cần mapping phức tạp
-
-Ví dụ rất hợp với bạn:
-
-sql = MariaDBQueryBuilder.fetch_table_rows(
-    table_name="districts",
-    fields=["id", "name", "city"],
-    limit=10
-)
-
-df = pd.read_sql(sql, con=engine)
-
-11. Một câu chốt để nhớ
-
-read_sql = SQL → DataFrame, không phải ORM, không phải repository
-
-Nếu bạn muốn, bước tiếp theo mình có thể:
-
-Demo read_sql với JOIN
-
-So sánh read_sql vs to_sql
-
-Dùng chunksize để xử lý dữ liệu lớn
-
-Gắn read_sql vào pipeline ETL
-
-👉 Bạn định dùng read_sql cho report hay training model?
