@@ -14,10 +14,3 @@ open(‘data.txt’, ‘w’, encoding=’utf8’)
     + "a+"  : Đọc + ghi tiếp	
     + "r+"  : Đọc + ghi (không xóa)	
 ```
-
-.name
-Trả về tên của file đang được mở.
-Cú pháp:
-    txt = open("D:\\workspace\Python_box\\a.txt", "rt")
-    print(txt.name)
-D:\workspace\Python_box\a.txt

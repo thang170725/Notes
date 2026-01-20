@@ -1,11 +1,16 @@
-Remove Items
+# .remove()
+```bash
 Để xóa một phần tử ra khỏi tuple.
-Cú pháp: <variable>.remove(value)
+```
+**Syn** 
+```bash
+<variable>.remove(value)
+```
+**Ex**
+```python
 myTuple = (1,2,3)
 a = list(myTuple)
 a.remove(3)
 myTuple = tuple(a)
-print(myTuple)
-(1, 2)
-
-
+print(myTuple) # (1, 2)
+```

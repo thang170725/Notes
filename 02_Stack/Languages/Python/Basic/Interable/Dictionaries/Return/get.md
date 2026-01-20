@@ -5,7 +5,8 @@
 **Syn**
 ```bash
 <variable>.get(<key>, default)
-    + Nếu key chưa có thì trả về giá trị defaule
+
+- Nếu key chưa có thì trả về giá trị defaule
 ```
 **Ex1**
 ```python

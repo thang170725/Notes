@@ -1,7 +1,15 @@
-clear()
+# .clear()
+```bash
 Để xóa toàn bộ set.
-Cú pháp: <variable>.clear()
+```
+**Syn** 
+```bash
+<variable>.clear()
+```
+**Ex**
+```python
 mySet= {"apple", "banana", "orange", "Lemon", "Passion"}
 mySet.clear()
-print(mySet)
-set()
+
+print(mySet) # set()
+```

@@ -1,5 +1,9 @@
-update()
-cập nhật phần tử với các mục từ đối số đã cho.
+# .update()
+```bash
+Cập nhật phần tử với các mục từ đối số đã cho.
+```
+**Ex**
+```python
 def main():
     di = {
         "name": "John",
@@ -9,4 +13,6 @@ def main():
     di.update({"age" : 40, "address": "USA"})
     print(di)
 main()
-{'name': 'John', 'age': 40, 'address': 'USA'}
+
+# {'name': 'John', 'age': 40, 'address': 'USA'}
+```

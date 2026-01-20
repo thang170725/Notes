@@ -6,12 +6,9 @@
 ```bash
 <variable>.keys()
 ```
-**Ex**
+**Ex1**
 ```python
-n = {
-    1: "một",
-    2: "hai"
-}
+n = { 1: "một", 2: "hai"}
 
 for i in n.keys():
     print(i)
