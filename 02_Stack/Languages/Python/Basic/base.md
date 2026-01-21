@@ -6,11 +6,7 @@ Lệnh cơ bản trong python
 # content
 ```
 
-## print()
-```text
-print(“…”, end=‘ ‘)
-- end: thêm dấu nào đó khi in
-```
+
 
 ## type()
 ```bash

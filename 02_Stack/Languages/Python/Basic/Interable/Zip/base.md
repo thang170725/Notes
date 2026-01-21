@@ -4,6 +4,14 @@
 names = ["Alice", "Bob", "Charlie"]
 ages = [25, 30, 35]
 
+for values in zip(names, ages):
+    print(values)
+```
+**Ex2**
+```python
+names = ["Alice", "Bob", "Charlie"]
+ages = [25, 30, 35]
+
 combined = zip(names, ages) # zip hai list lại với nhau
 print(list(combined)) # [('Alice', 25), ('Bob', 30), ('Charlie', 35)]
 

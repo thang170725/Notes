@@ -2,9 +2,13 @@
 ```bash
 - Trả về danh sách các giá trị của dictionary.
 ```
-**Syn**
+**Ex**
 ```python
-dir = dict(name='John', age=25, city='New York')
+data = {
+    'names': ['Thang', "Minh", "Nghia", "Quy"],
+    'ages': [18, 20, 23, 16],
+    'scores': [10, 9, 6, 7]
+}
 
-print(dir.values()) # dict_values(['John', 25, 'New York'])
+print(data.values()) # dict_values([['Thang', 'Minh', 'Nghia', 'Quy'], [18, 20, 23, 16], [10, 9, 6, 7]])
 ```

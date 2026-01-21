@@ -1,6 +1,6 @@
 # .pop()
 ```bash
-Để xóa mục có tên khóa được chỉ định.
+- Để xóa mục có tên khóa được chỉ định.
 ```
 **Ex**
 ```python

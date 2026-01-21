@@ -20,11 +20,7 @@ My name is Thang, i am from Viet Nam
 My name is Thang, i am from Viet Nam
 My name is Thang, i am from Viet Nam
 My name is Thang, i am from Viet Nam
-:<
-Thiết lập 8 khoảng trắng và căn giá trị phần tử sang trái.
-txt = "We have {:<8} chickens."
-print(txt.format(49))
-We have 49       chickens.
+
 :>
 Thiết lập 8 khoảng trắng và căn giá trị phần tử sang phải.
 txt = "We have {:>8} chickens."
