@@ -1,8 +1,46 @@
+- [Cấu trúc đề xuất](#cấu-trúc-đề-xuất)
+- [Cài đặt](#cài-đặt)
+- [Bài tập](#bài-tập)
+  - [Demo bài 1](#demo-bài-1)
+  - [Bài tập 2](#bài-tập-2)
+---
+# Cấu trúc đề xuất
+```bash
+Pandas/
+├── 01_io_conversion.md       # Nhập/Xuất & Chuyển đổi (Read, Write, Coercion)
+├── 02_structure_info.md      # Khởi tạo & Thông tin (Create, Size, base, dtypes)
+├── 03_selection_filter.md    # Trích xuất & Lọc (Loc, Head/Tail, Check, Where)
+├── 04_data_cleaning.md       # Làm sạch & Cập nhật (Drop, Fillna, Duplicated, Rename)
+└── 05_transformation.md      # Biến đổi & Thống kê (Merge, Sort, Value_counts, Astype)
+```
+**Chi tiết cách gộp nội dung:**
+```bash
+1. 01_io_conversion.md (Đọc, Ghi & Ép kiểu)
+    + Gom các thao tác đưa dữ liệu vào và ra:
+    + Nội dung: read_csv, read_sql, to_csv, to_sql, values-to_numpy.
+    + Lý do: Khi bạn làm việc với File hoặc SQL, bạn thường quan tâm đến việc đọc vào và ghi ra ở cùng một chỗ để kiểm tra tính nhất quán.
+2. 02_structure_info.md (Cấu trúc & Kiểm tra nhanh)
+    + Gom các thứ liên quan đến hình dáng DataFrame:
+    + Nội dung: dataFrame.md, series.md, shape.md, columns.md, max_rows.md.
+    + Ví dụ: Bạn mở file này khi cần xem cách tạo một cái khung dữ liệu mới hoặc kiểm tra xem nó có bao nhiêu dòng, cột.
+3. 03_selection_filter.md (Lấy dữ liệu ra)
+    + Gom các hàm dùng để "soi" dữ liệu:
+    + Nội dung: loc.md, head.md, tail.md, where.md, notnull.md.
+    + Lợi ích: Khi cần lọc dữ liệu theo điều kiện, bạn sẽ thấy loc và where nằm cạnh nhau để chọn phương án tối ưu.
+4. 04_data_cleaning.md (Xử lý dữ liệu rác)
+    + Đây là phần quan trọng nhất trong Pandas:
+    + Nội dung: dropna.md, fillna.md, drop.md, duplicated-drop_duplicated.md, rename.md.
+    + Lý do: Quy trình làm sạch thường là: Xóa dòng trống (dropna) -> Điền giá trị thiếu (fillna) -> Xóa trùng (drop_duplicated). Để chúng ở 3 folder khác nhau sẽ làm ngắt quãng tư duy xử lý.
+5. 05_transformation.md (Biến đổi nâng cao)
+    + Gom các thao tác làm thay đổi bản chất dữ liệu hoặc gộp nhóm:
+    + Nội dung: merge.md, sort_values.md, value_counts.md, nunique.md, astype.md.
+    + Cách xử lý "Ví dụ thực tế" trong Pandas:
+```
+# Cài đặt
 ```bash
 - Thường dùng để xử lý dữ liệu. Pandas kế thừa numpy tức là nó có thể sử dụng hầu hết các hàm trong numpy
 - pip install pandas / conda install pandas.
 ```
-
 # Bài tập
 ## Demo bài 1
 **Topic**
@@ -28,30 +66,29 @@ import pandas as pd
 
 def input_workers():
     n = int(input("Số lượng công nhân: "))
+    
     data = []
-
     for i in range(n):
         print(f"\nNhập công nhân thứ {i+1}")
-        worker_id = input("Mã CN: ")
-        name = input("Họ tên: ")
-        salary = float(input("Lương ngày: "))
-        days = float(input("Số ngày công: "))
-        allowance = float(input("Phụ cấp: "))
 
-        data.append([worker_id, name, salary, days, allowance])
+        worker = {
+            'worker_id': input('Mã công nhân: '),
+            'name': input('Họ tên: '),
+            'days_work': float(input('Số ngày làm việc: ')),
+            'salary': float(input('Lương ngày: ')),
+            'sum_salary': None
+        }
 
-    df = pd.DataFrame(
-        data,
-        columns=['id', 'name', 'salary', 'days_work', 'allowance']
-    )
+        data.append(worker)
+
+    df = pd.DataFrame(data)
+
     return df
-
 
 def calculate_salary(df):
     df['sum_salary'] = df['salary'] * df['days_work'] + df['allowance']
     print("\n=== Đã tính tổng lương ===")
     print(df)
-
 
 def filter_high_salary(df):
     df_high = df[df['sum_salary'] > 15_000_000]
@@ -59,13 +96,11 @@ def filter_high_salary(df):
     print(df_high)
     print("Số lượng:", df_high.shape[0])
 
-
 def sort_by_salary(df):
     df_sorted = df.sort_values(by='sum_salary', ascending=False)
     print("\n=== Danh sách sắp xếp theo tổng lương giảm dần ===")
     print(df_sorted)
     return df_sorted
-
 
 def update_allowance(df):
     df.loc[df['days_work'] > 26, 'allowance'] += 200_000
@@ -73,13 +108,11 @@ def update_allowance(df):
     print("\n=== Đã cập nhật phụ cấp ===")
     print(df)
 
-
 def delete_zero_salary(df):
     df = df[df['salary'] != 0]
     print("\n=== Sau khi xóa công nhân có lương = 0 ===")
     print(df)
     return df
-
 
 def save_csv(df):
     df.to_csv("cong_nhan.csv", index=False, encoding="utf-8-sig")
@@ -158,7 +191,6 @@ def input_workers():
         })
 
     return pd.DataFrame(data)
-
 
 # ===== IN BẢNG =====
 def print_table(df):

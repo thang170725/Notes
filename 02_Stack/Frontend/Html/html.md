@@ -1,5 +1,36 @@
+```bash
+Html/
+├── 01_base_metadata.md   # Cấu trúc boilerplate, thẻ <head>, meta, title, link
+├── 02_text_content.md    # Các thẻ văn bản: h1-h6, p, span, br, hr, strong, em...
+├── 03_grouping_layout.md # Thẻ khối & bố cục: div, main, section, article, header, footer, aside, ul, ol, li
+├── 04_forms_input.md     # Form, input (các loại), button, select, textarea, label
+├── 05_media_links.md     # Thẻ a (link), img, video, audio, iframe
+└── 06_tables_others.md   # Table, các thẻ hiếm dùng hoặc thẻ đặc biệt (canvas, svg...)
+```
+**Chi tiết nội dung từng file**
+```bash
+1. 01_base_metadata.md
+    + Nơi chứa những thứ "không hiển thị trực tiếp" nhưng cực kỳ quan trọng.
+    + Nội dung: Cấu trúc !DOCTYPE, <html>, <head>, <meta charset="UTF-8">, <meta name="viewport"> (cho mobile), cách chèn CSS/JS.
 
+2. 02_text_content.md
+Tập trung vào ngữ nghĩa của văn bản.
 
+Nội dung: Phân biệt khi nào dùng <b> vs <strong>, <i> vs <em>. Cách dùng các thẻ heading để làm SEO.
+
+3. 03_grouping_layout.md (Gom từ layout.md cũ của bạn)
+Đây là "xương sườn" để bạn kết hợp với CSS Layout sau này.
+
+Nội dung: Các thẻ Semantic (thẻ có nghĩa) như <nav>, <footer>. Đừng quên ghi chú về sự khác biệt giữa Block (div, p) và Inline (span, a).
+
+4. 04_forms_input.md
+Phần này rất phức tạp vì thẻ <input> có cực kỳ nhiều type (text, password, checkbox, radio, date, file...).
+
+Nội dung: Cách nhóm lại bằng <fieldset>, <legend>, và các thuộc tính quan trọng như placeholder, required, value, name.
+5. 05_media_links.md
+    + Cách kết nối dữ liệu bên ngoài.
+    + Nội dung: Thẻ <a> với các thuộc tính target="_blank". Thẻ <img> với alt, src. Cách nhúng video từ YouTube bằng <iframe>.
+```
 ## h1 -> h6 
 Định ra đoạn text làm tiêu đề cho các nội dung phía sau. Cỡ chữ giảm dần từ 1 đến 6. 
 
@@ -110,16 +141,7 @@ thẻ <bdi> … </bdi> có chức năng phân lập một phần văn bản mà 
     + _top
 ```
 
-## link
-Liên kết file HTML với file bên ngoài. Thẻ Link không có thẻ đóng. Các viết tắt: link:css.
-**Syn**
-```bash
-<link rel="stylesheet" href="Tester.css">
-- rel
-    + stylesheet: giá trị được sử dụng phổ biến nhất. Liên kết với một biểu định kiểu bên ngoài.
-    + icon: Một tài nguyên biểu tượng. (<link rel="icon" href="./image/Hulk.jpg">)
-- href  : gắn một liên kết là URL vào file html.
-```
+
 
 ## button
 Để tạo ra một nút bấm.

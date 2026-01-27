@@ -1,3 +1,55 @@
+- [Cấu trúc thư mục](#cấu-trúc-thư-mục)
+  - [1. Thao tác với Thư mục](#1-thao-tác-với-thư-mục)
+  - [2. Thao tác với File](#2-thao-tác-với-file)
+  - [Xem thời gian khởi động máy](#xem-thời-gian-khởi-động-máy)
+  - [rmdir a](#rmdir-a)
+- [sudo](#sudo)
+---
+# Cấu trúc thư mục
+```bash
+Terminal/
+├── 01_file_directory_ops.md  # Thao tác File & Thư mục (mkdir, touch, ls, du, rm, cp, mv)
+├── 02_system_disk_mgmt.md    # Quản trị Hệ thống & Đĩa (mount, df, du, top, clear)
+└── 03_package_software.md    # Cài đặt & Phần mềm (dpkg/deb, apt, update hệ thống)
+```
+**Chi tiết cách gộp nội dung**
+```bash
+1. 01_file_directory_ops.md (Quản lý File & Thư mục)
+    + Đây là file bạn sẽ mở thường xuyên nhất.
+    + Nội dung từ: mkdir.md, touch.md, ls.md.
+    + Gợi ý thêm: Bạn nên cho lệnh rm (xóa file), cp (copy), mv (di chuyển) vào đây luôn.
+2. 02_system_disk_mgmt.md (Hệ thống & Phần cứng)
+    + Gom các lệnh tác động đến tài nguyên máy tính.
+    + Nội dung từ: du.md (dung lượng), mount-disk.md, clear.md.
+3. 03_package_software.md (Cài đặt & Cập nhật)
+Gom các lệnh liên quan đến việc cài cắm tool.
+
+Nội dung từ: file-deb.md, video.md (nếu đây là hướng dẫn cài tool quay phim/xử lý video), update.md.
+
+Nội dung chính: Cách dùng dpkg, apt, hoặc cài đặt từ file .deb.
+
+Tại sao cách này tốt hơn cho tra cứu Terminal?
+Tránh nhầm lẫn ngữ nghĩa: Việc chia mkdir vào Create và ls vào Display khiến bạn phải nhảy qua lại giữa 2 folder chỉ để thực hiện một việc đơn giản là tạo và kiểm tra file.
+
+Hỗ trợ ghi nhớ Flags: Các lệnh Linux mạnh nhất ở các tham số (options). Khi gộp chung, bạn có thể tạo một bảng so sánh các tham số hay dùng.
+
+Search hiệu quả: Khi bạn search "disk", VS Code sẽ chỉ ra đúng file 02_system_disk_mgmt.md.
+
+Mẹo tổ chức nội dung trong file Terminal:
+Trong Terminal, thay vì viết giải thích dài dòng, hãy dùng cấu trúc "Task -> Command":
+
+Markdown
+
+## 1. Thao tác với Thư mục
+- **Tạo thư mục tầng (Nested):** `mkdir -p path/to/dir`
+- **Liệt kê file chi tiết (Size, Hidden):** `ls -lah`
+
+## 2. Thao tác với File
+- **Tạo file nhanh:** `touch filename.txt`
+Một lưu ý nhỏ: File video.md trong folder Install của bạn có vẻ hơi lạc lõng. Nếu đó là lệnh cài đặt một phần mềm cụ thể (ví dụ ffmpeg), hãy đưa nó vào mục "Cài đặt phần mềm theo nhu cầu" trong file 03.
+
+Bạn có muốn tôi liệt kê thêm một vài lệnh Linux cơ bản nhưng cực quan trọng để bạn điền vào các file mới này cho đầy đủ không?
+
 ## Xem thời gian khởi động máy
 uptime -s
 thang@PhatToNhuLai:~$ uptime -s

@@ -1,9 +1,7 @@
 # Kiểu dữ liệu
 ```bash
-CHAR(n)         : Kiểu chuỗi với độ dài cố định
-NCHAR(n)        : Kiếu chuỗi với độ dài cố định hỗ trợ UNICODE
+CHAR(n)         : Kiểu chuỗi với độ dài cố địnhv
 VARCHAR(n)      : Kiểu chuỗi với độ dài chính xác
-NVARCHAR(n)     : Kiểu chuỗi với độ dài chính xác hỗ trợ UNICODE
 TEXT            : Dữ liệu kiếu chuỗi với độ dài lớn (tối đa 2,147,483,647 ký tự)
 NTEXT           : Dữ liệu kiếu chuỗi với độ dài lớn và hỗ trợ UNICODE (tối đa 1,073,741,823 ký tự
 INT             : kiểu số nguyên
@@ -15,7 +13,7 @@ enum            : kiểu giữ liệu bắt buộc phải có giá trị
 MONEY           : Kiểu tiền tệ
 DATETIME        : Kiểu ngày giờ (chính xác đến phần trăm của giây)
 SMALLDATETIME   : Kiểu ngày giờ (chính xác đến phút)
-
+unique          : Không cho trùng giá trị
 Như kiểu Integer
 Số nguyên có giá trị từ 0 đến 255.
 ▪ SMALLINT
