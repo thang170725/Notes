@@ -1,4 +1,5 @@
 - [Hóa Đơn bán hàng](#hóa-đơn-bán-hàng)
+- [bai 6.5](#bai-65)
 ---
 # Hóa Đơn bán hàng
 ```python
@@ -148,6 +149,7 @@ if __name__ == "__main__":
     invoice = SalesInvoice()
     invoice.print_invoice_box()
 ```
+# bai 6.5
 ```python
 from typing import Protocol
 
