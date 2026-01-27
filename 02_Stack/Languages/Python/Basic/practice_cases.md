@@ -148,3 +148,144 @@ if __name__ == "__main__":
     invoice = SalesInvoice()
     invoice.print_invoice_box()
 ```
+```python
+from typing import Protocol
+
+class Tax(Protocol):
+    def tax(self):
+        ...
+
+class Tivi:
+    def __init__(self, name, price, quantity):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+        self.t = self.tax()
+        self.total = self.total_item
+        
+    
+    @property
+    def total_item(self):
+        total = self.price * self.quantity * self.t
+        return total
+    
+    def tax(self):
+        self.t = 0.5
+        return self.t
+
+class Fan:
+    def __init__(self, name, price, quantity):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+        self.t = self.tax()
+        self.total = self.total_item
+        
+    
+    @property
+    def total_item(self):
+        total = self.price * self.quantity * self.t
+        return total
+    
+    def tax(self):
+        self.t = 0.6
+        return self.t
+
+class Mobi:
+    def __init__(self, name, price, quantity):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+        self.t = self.tax()
+        self.total = self.total_item
+        
+    
+    @property
+    def total_item(self):
+        total = self.price * self.quantity * self.t
+        return total
+    
+    def tax(self):
+        self.t = 0.7
+        return self.t
+
+class Item:
+    def __init__(self, name, price, quantity, value):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+        self.t = self.tax(value)
+        self.total = self.total_item
+    
+    @property
+    def total_item(self):
+        total = self.price * self.quantity * self.t
+        return total
+    
+    def tax(self, value):
+        self.t = value
+        return self.t
+        
+class Items:
+    def __init__(self):
+        self.items = []
+    
+    def add_item(self, item: Item):
+        self.items.append(item)
+    
+    def sum_total(self):
+        sum_items = 0
+        for item in self.items:
+            sum_items += item.total
+            
+        return sum_items
+
+class GoodsReceipt:
+    def __init__(self, id_receipt, id_brand, address, days, name_brand):
+        self.id_receipt = id_receipt
+        self.id_brand = id_brand
+        self.address = address
+        self.days = days
+        self.name_brand = name_brand
+
+
+        self.items = Items()
+    
+    def print_receipt(self):
+        print('\nPHIẾU NHẬP HÀNG')
+        print("-" * 56)
+
+        print(f"Mã phiếu: {self.id_receipt} {' '*20} Ngày lập: {self.days}")
+        print(f"Mã NCC: {self.id_brand} {' '*20} Tên NCC: {self.name_brand}")
+        print(f"Địa chỉ: {self.address}")
+        print("-" * 56)
+
+        print(f"{'Tên hàng':<15} | {'Đơn giá':>6} | {'Số lượng':>12} | {'Thành tiền':>15}")
+        print("-" * 56)
+
+        for i in self.items.items:
+            print(f"{i.name:<15} | {i.price:>6} | {i.quantity:>12.2f} | {i.total:>15.2f}")
+
+        print("-"*56)
+        print("Tổng tiền:", self.items.sum_total())
+
+def tax_item(t: Tax):
+    print(t.tax())
+
+if __name__ == "__main__":
+    tivi = Tivi('TiVi', 30, 2)
+    fan = Fan("Quạt", 1.2, 3)
+    mobi = Mobi("Mobi", 5, 10)
+    
+    tax_item(tivi)
+    tax_item(fan)
+    tax_item(mobi)
+    
+    li = [tivi, fan, mobi]
+    
+    receipt = GoodsReceipt('PH001', 'NCC1', "Khu công nghiệp Như Quỳnh A", '1/1/2007', 'LG-Electronic')
+    for item in li:
+        receipt.items.add_item(item)
+    
+    receipt.print_receipt()
+```

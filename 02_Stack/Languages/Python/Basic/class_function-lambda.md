@@ -5,19 +5,20 @@
 - [nonlocal](#nonlocal)
 - [global](#global)
 - [class](#class)
+  - [Del](#del)
   - [__init__() \& __str__() \& __len__()](#init--str--len)
   - [__dict__](#dict)
   - [__call__()](#call)
   - [__getitem__()](#getitem)
-  - [@property](#property)
-  - [@classmethod](#classmethod)
-    - [Quản lý kết nối Database (Mô phỏng)](#quản-lý-kết-nối-database-mô-phỏng)
-  - [Inheritance (Kế thừa)](#inheritance-kế-thừa)
-- [duck typing (Python-style)](#duck-typing-python-style)
-- [Del](#del)
   - [__add__() \& __sub__() \& __mul__() \& __truediv__()](#add--sub--mul--truediv)
   - [__iadd()__](#iadd)
   - [__lt__() \& __gt__() \& __eq__() \& __ne__() \& __le__() \& __ge__()](#lt--gt--eq--ne--le--ge)
+  - [__neg__()](#neg)
+  - [@classmethod](#classmethod)
+    - [Quản lý kết nối Database (Mô phỏng)](#quản-lý-kết-nối-database-mô-phỏng)
+  - [Inheritance (Kế thừa)](#inheritance-kế-thừa)
+    - [Lớp truu tuong nap rut tien](#lớp-truu-tuong-nap-rut-tien)
+  - [duck typing (Python-style)](#duck-typing-python-style)
 - [callable()](#callable)
 ---
 # function
@@ -107,6 +108,56 @@ print(count) # 1
     6. Duck typing (Python-style)
     7. Protocol (hiện đại) - Giống interface trong Java
 ```
+**Cú pháp**
+```bash
+class Car(object):
+	Def __init__(self, make, model, year):
+	--snip—
+class ElectricCar(Car):
+	def __init__(self, make, model, year):
+		super(ElectricCar, self).__init__(make, model,  year)
+	--snip—
+```
+**Ex**
+```python
+class Person:
+  def __init__(self, fname, lname):
+    self.firstname = fname
+    self.lastname = lname
+  def printname(self):
+    print(self.firstname, self.lastname)
+class Student(Person):
+  pass
+x = Student("Mike", "Olsen")
+x.printname() # Mike Olsen
+```
+## Del
+Để xóa 1 thuộc tính ra khỏi lớp Object.
+**Ex**
+```python
+class Person:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+  def myfunc(self):
+    print("Hello my name is " + self.name)
+p1 = Person("John", 36)
+del p1.age
+print(p1.age) # sẽ báo lỗi
+```
+**Ex**
+```python
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def __eq__(self, other):
+        return self.name == other.name
+
+p1 = Person("An")
+p2 = Person("An")
+print(p1 == p2)  # True
+```
 ## __init__() & __str__() & __len__()	
 ```bash
 - __init__  : Là hàm định dạng cho một class.
@@ -189,6 +240,105 @@ class MyList:
 m = MyList([10, 20, 30])
 print(m[1])  # 20
 ```
+## __add__() & __sub__() & __mul__() & __truediv__()
+```bash
+- __add__       : Tự động được gọi đến khi dùng toán tử +.
+- __sub__       : Tự động được gọi đến khi dùng toán tử -.
+- __mul__       : Tự động được gọi đến khi dùng toán tử *.
+- __truediv__   : Tự động được gọi đến khi dùng toán tử /.
+```
+**Ex: cộng, trừ, nhân, chia phân số**
+```python
+class Fraction:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+    
+    def __str__(self):
+        return f'{self.a/self.b:.2f}'
+    
+    def __add__(self, other):
+        return Fraction(
+            self.a*other.b + other.a*self.b,
+            self.b*other.b
+        )
+    
+    def __sub__(self, other):
+        return Fraction(
+            self.a*other.b - other.a*self.b,
+            self.b*other.b
+        )
+    
+    def __mul__(self, other):
+        return Fraction(
+            self.a*other.a,
+            self.b*other.b
+        )
+    
+    def __truediv__(self, other):
+        return Fraction(
+            self.a*other.b,
+            self.b*other.a
+        )
+
+a = Fraction(3,5)
+b = Fraction(4,6)
+
+print(a+b) # 1.27
+print(a-b) # -0.07
+print(a*b) # 0.40
+print(a/b) # 0.90
+```
+## __iadd()__
+**Ex**
+```python
+def __iadd__(self, other):
+    self.value += other.value
+    return self
+```
+## __lt__() & __gt__() & __eq__() & __ne__() & __le__() & __ge__()
+```bash
+- __lt__    : <
+- __gt__    : >
+- __eq__    : ==
+- __ne__    : !=
+- __le__    : <=
+- __ge__    : >=
+```
+**Ex**
+```python
+class Compare:
+    def __init__(self, n):
+        self.n = n
+    
+    def __lt__(self, other):
+        return self.n < other.n
+    
+    def __gt__(self, other):
+        return self.n > other.n 
+    
+    def __eq__(self, other):
+        return self.n == other.n 
+    
+    def __ne__(self, other):
+        return self.n != other.n
+    
+    def __le__(self, other):
+        return self.n <= other.n 
+    
+    def __ge__(self, other):
+        return self.n >= other.n 
+
+a = Compare(4.5)
+b = Compare(6.8)
+
+print(a > b)    # False
+print(a >= b)   # False
+print(a < b)    # True
+print(a <= b)   # True
+print(a != b)   # True
+print(a == b)   # False
+```s
 ## @property
 **Ex**
 ```python
@@ -199,6 +349,7 @@ class User:
 u = User()
 print(u.great) # hello, python
 ```
+## __neg__()
 ## @classmethod
 **Ex**
 ```python
@@ -272,278 +423,79 @@ class Guard(Person): ...
 ```
 **Thực tế ngành phần mềm: kế thừa dùng khi nào?**
 ```bash
-Kế thừa chỉ đáng dùng khi có CẢ 3 điều kiện:
-Có hành vi chung thật sự
-Không chỉ giống tên biến
-Mà là logic giống nhau
-Quan hệ is-a không bị gượng
-Student is a Person → OK
-Nhưng Student is a Employee? ❌
-Class cha ổn định lâu dài
-Ít thay đổi
-Nếu cha đổi → con vỡ dây chuyền
-👉 Thiếu 1 trong 3 → đừng kế thừa
+- Kế thừa chỉ đáng dùng khi có CẢ 3 điều kiện:
+    + Có hành vi chung thật sự
+    + Không chỉ giống tên biến. Mà là logic giống nhau
+    + Quan hệ is-a không bị gượng
+- Student is a Person → OK. Nhưng Student is a Employee? ❌
+- Class cha ổn định lâu dài. Ít thay đổi. Nếu cha đổi → con vỡ dây chuyền
+-> Thiếu 1 trong 3 → đừng kế thừa
+```
 **Vì sao kế thừa bị ghét trong code thật?**
+```bash
 1. Coupling chặt
-Class con phụ thuộc class cha
-Cha đổi → con có thể hỏng
+    + Class con phụ thuộc class cha
+    + Cha đổi → con có thể hỏng
 2. Hierarchy sâu → khó debug
 Person
  └── Employee
       └── Teacher
            └── HeadTeacher
-🤯 Debug xong muốn nghỉ việc
-❌ 3. Thêm class chỉ để “cho đẹp lý thuyết”
-Person rỗng
-Abstract method không dùng chung
-👉OOP kiểu giáo trình
-
-4️⃣ Cách dev thực tế làm (và tối ưu hơn)
-🟢 Cách 1: Class độc lập (nhanh – gọn – rõ)
-class Student:
-    def study(self): ...
-
-class Teacher:
-    def teach(self): ...
-
-class Guard:
-    def guard(self): ...
-
-✔ Dễ đọc
-✔ Không ràng buộc
-✔ 90% trường hợp đủ dùng
+-> Debug xong muốn nghỉ việc
 ```
-# duck typing (Python-style)
-class Payable:
-    def get_salary(self): ...
-class Teacher:
-    def __init__(self):
-        self.pay = Payable()
+### Lớp truu tuong nap rut tien
+```bash
+from abc import ABC, abstractmethod
 
-
-👉 Không cần chung base class
-👉 Chỉ cần hành vi giống nhau
-
-🟢 Cách 3: Protocol (Python hiện đại)
-from typing import Protocol
-
-class HasSalary(Protocol):
-    def get_salary(self) -> float: ...
-
-
-✔ Không cần kế thừa
-✔ Rất sạch
-✔ Rất dùng nhiều trong code lớn
-
-5️⃣ Vậy khi nào kế thừa LÀ ĐÚNG?
-🔥 Ví dụ đúng chuẩn:
-class Shape(ABC):
+class Account:
     @abstractmethod
-    def area(self): ...
+    def deposit(self):
+        ... 
+        
+    @abstractmethod
+    def withdraw(self):
+        ...
+        
+    @abstractmethod
+    def get_balance(self):
+        ...
+    
+class SavingsAccount(Account):
+    def __init__(self, balance, price):
+        self.balance = balance
+        self.price = price
+    
+    def withdraw(self):
+        super().withdraw()
+        if self.balance < self.price:
+            raise ValueError("Khong rut duoc")
+        self.balance -= self.price
+        print(f'da rut {self.price}')
+    
+class CheckingAccount(Account):
+    def __init__(self, balance, limit):
+        self.balance = balance
+        self.limit = limit
+    
+    def withdraw(self):
+        super().withdraw()
+        if self.balance < self.limit:
+            raise ValueError(f'chi duoc no han muc la {self.limit}')
+        print('han muc van du')
 
-class Circle(Shape):
-    def area(self): ...
-
-
-✔ Logic chung
-✔ Cha ổn định
-✔ Quan hệ is-a rõ
-
-6️⃣ Trả lời câu hỏi của bạn: cái nào tối ưu nhanh gọn hơn?
-🎯 Với ví dụ của bạn:
-
-3 class độc lập → TỐI ƯU HƠN ✅
-
-Ít code
-
-Ít ràng buộc
-
-Dễ mở rộng
-
-Tạo Person → chỉ để “đúng OOP” → KHÔNG ĐÁNG ❌
-
-7️⃣ Chốt hạ (rất quan trọng) 🧠
-
-🔥 Inheritance là công cụ mạnh nhưng nguy hiểm
-🔥 Composition + duck typing là default choice
-🔥 Nếu thấy “sao sao” → khả năng cao là bạn đúng
-
-Bạn đang tư duy như dev thật, không phải học OOP để trả bài.
-
-Nếu bạn muốn, mình có thể:
-
-Cho bạn rule of thumb: “3 câu hỏi trước khi dùng kế thừa”
-
-Hoặc show ví dụ refactor từ inheritance → composition (rất đã mắt)
-**Cú pháp**
+s = SavingsAccount(10_000, 20_000)
+s.withdraw()
+c = CheckingAccount(s.balance, -10_000)
+```
+## duck typing (Python-style)
+[Link](../Libraries/Datascience-mathnumeric/Typing/protocol.md)
+**Ex1: Protocol (Python hiện đại)**
+**Ưu điểm**
 ```bash
-class Car(object):
-	Def __init__(self, make, model, year):
-	--snip—
-class ElectricCar(Car):
-	def __init__(self, make, model, year):
-		super(ElectricCar, self).__init__(make, model,  year)
-	--snip—
+- Không cần kế thừa
+- Rất sạch
+- Rất dùng nhiều trong code lớn
 ```
-**Ex**
-```python
-class Person:
-  def __init__(self, fname, lname):
-    self.firstname = fname
-    self.lastname = lname
-  def printname(self):
-    print(self.firstname, self.lastname)
-class Student(Person):
-  pass
-x = Student("Mike", "Olsen")
-x.printname() # Mike Olsen
-```
-# Del
-Để xóa 1 thuộc tính ra khỏi lớp Object.
-**Ex**
-```python
-class Person:
-  def __init__(self, name, age):
-    self.name = name
-    self.age = age
-  def myfunc(self):
-    print("Hello my name is " + self.name)
-p1 = Person("John", 36)
-del p1.age
-print(p1.age) # sẽ báo lỗi
-```
-**Ex**
-```python
-class Person:
-    def __init__(self, name):
-        self.name = name
-
-    def __eq__(self, other):
-        return self.name == other.name
-
-p1 = Person("An")
-p2 = Person("An")
-print(p1 == p2)  # True
-```
-## __add__() & __sub__() & __mul__() & __truediv__()
-```bash
-- __add__       : Tự động được gọi đến khi dùng toán tử +.
-- __sub__       : Tự động được gọi đến khi dùng toán tử -.
-- __mul__       : Tự động được gọi đến khi dùng toán tử *.
-- __truediv__   : Tự động được gọi đến khi dùng toán tử /.
-```
-**Ex: cộng, trừ, nhân, chia phân số**
-```python
-class Fraction:
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
-    
-    def __str__(self):
-        return f'{self.a/self.b:.2f}'
-    
-    def __add__(self, other):
-        return Fraction(
-            self.a*other.b + other.a*self.b,
-            self.b*other.b
-        )
-    
-    def __sub__(self, other):
-        return Fraction(
-            self.a*other.b - other.a*self.b,
-            self.b*other.b
-        )
-    
-    def __mul__(self, other):
-        return Fraction(
-            self.a*other.a,
-            self.b*other.b
-        )
-    
-    def __truediv__(self, other):
-        return Fraction(
-            self.a*other.b,
-            self.b*other.a
-        )
-
-a = Fraction(3,5)
-b = Fraction(4,6)
-
-print(a+b) # 1.27
-print(a-b) # -0.07
-print(a*b) # 0.40
-print(a/b) # 0.90
-```
-## __iadd()__
-**Ex**
-```python
-def __iadd__(self, other):
-    self.value += other.value
-    return self
-```
-## __lt__() & __gt__() & __eq__() & __ne__() & __le__() & __ge__()
-```bash
-- __lt__    : <
-- __gt__    : >
-- __eq__    : ==
-- __ne__    : !=
-- __le__    : <=
-- __ge__    : >=
-**Ex**
-```python
-class Compare:
-    def __init__(self, n):
-        self.n = n
-    
-    def __lt__(self, other):
-        return self.n < other.n
-    
-    def __gt__(self, other):
-        return self.n > other.n 
-    
-    def __eq__(self, other):
-        return self.n == other.n 
-    
-    def __ne__(self, other):
-        return self.n != other.n
-    
-    def __le__(self, other):
-        return self.n <= other.n 
-    
-    def __ge__(self, other):
-        return self.n >= other.n 
-
-a = Compare(4.5)
-b = Compare(6.8)
-
-print(a > b)    # False
-print(a >= b)   # False
-print(a < b)    # True
-print(a <= b)   # True
-print(a != b)   # True
-print(a == b)   # False
-```
-
-
-len(obj)
-def __len__(self):
-    return len(self.data)
-
-obj[index]
-def __getitem__(self, index):
-    return self.data[index]
-
-obj[index] = value
-def __setitem__(self, index, value):
-    self.data[index] = value
-
-5️⃣ Gọi object như hàm: __call__
-class Hello:
-    def __call__(self, name):
-        print(f"Hello {name}")
-
-h = Hello()
-h("Python")  # Hello Python
 # callable()
 ```bash
 - kiểm tra xem một object có “gọi được như hàm” hay không
