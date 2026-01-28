@@ -1,3 +1,8 @@
+- [Cấu trúc](#cấu-trúc)
+- [Extensions hỗ trợ Javascript](#extensions-hỗ-trợ-javascript)
+- [JS Where To](#js-where-to)
+---
+# Cấu trúc
 ```bash
 Javascript/
 ├── 01_basics_datatypes.md   # Biến, Xem kết quả biến, Number, String, Array (thay cho List), Object (thay cho Dict)
@@ -10,19 +15,9 @@ Javascript/
 ```
 # Extensions hỗ trợ Javascript
 - Quokka.js
-## JS Where To
+# JS Where To
 ```bash
 - Internal: Viết vào file HTML và sử dụng thẻ <script> … </script> để bao quanh.
 - External: Viết ra một file javascript riêng rồi import vào file HTML bằng thuộc tính src=’’;
 - Inline: Viết code js thẳng vào thẻ của file HTML thông qua các thuộc tính của javascript hỗ trợ liên kết với file HTML
 ```
-
-
-
-
-
-
-
-
-
-

@@ -1,4 +1,4 @@
-# state
+# useState()
 ```bash
 - Dữ liệu thay đổi theo thời gian
 - React sẽ tự re-render khi state thay đổi. State đổi → UI tự đổi

@@ -2,9 +2,10 @@
 - [click|onclick \& dbclick|ondbclick](#clickonclick--dbclickondbclick)
   - [Tạo một chức năng tra cứu màu sắc](#tạo-một-chức-năng-tra-cứu-màu-sắc)
 - [mouseover|onmouseover \& mousemove|onmousemove \& mouseout|onmouseout](#mouseoveronmouseover--mousemoveonmousemove--mouseoutonmouseout)
-- [change || onchange](#change--onchange)
+- [change | onchange](#change--onchange)
 - [oninput|input](#oninputinput)
-- [keydown|onkeydown \& keypress|onkeypress](#keydownonkeydown--keypressonkeypress)
+- [keydown | onkeydown \& keypress | onkeypress](#keydown--onkeydown--keypress--onkeypress)
+- [target.value](#targetvalue)
 
 ---
 
@@ -63,8 +64,11 @@ button[0].onmouseover = function (){
     alert("Welcome to Javascipt");
 }
 ```
-# change || onchange
-Gắn một hành động khi giá trị của một phần tử bị thay đổi. Thường dùng với thẻ select.
+# change | onchange
+```bash
+Gắn một hành động khi giá trị của một phần tử bị thay đổi.
+```
+**Ex**
 ```html
 <div style="width: 50px; height: 50px;"></div>
   <select  onchange="ChangeColor(this.value)">
@@ -98,8 +102,12 @@ a.oninput = function (){
       change.style.fontSize = c;
 }
 
-# keydown|onkeydown & keypress|onkeypress
-Để gắn trình xử lý khi nhấn một nút trên bàn phím.
+# keydown | onkeydown & keypress | onkeypress
+```bash
+- Để gắn trình xử lý khi nhấn một nút trên bàn phím.
+```
+**Ex1**
+```js
 function main(){
     let inp = document.getElementsByTagName("input");
     let text = document.getElementsByTagName("p")
@@ -108,7 +116,9 @@ function main(){
     }
 }
 main();
-
+```
+**Ex2**
+```js
 function main(){
     let inp = document.getElementsByTagName("input")[0];
     inp.onkeydown = function(){
@@ -116,22 +126,24 @@ function main(){
     }
 }
 main();
-Nhập một ký tự bất kỳ từ bàn phím thì xuất hiện bảng alert
+```
+# target.value
+```bash
+- Lấy giá trị hiện tại của input / textarea / select khi có sự kiện xảy ra.
+```
+**Ex: gõ tới đâu chữ hiện tới đó**
+```html
+<input id="name" type="text" />
+<p id="output"></p>
+```
+```js
+const input = document.getElementById("name");
+const output = document.getElementById("output");
 
-Xảy ra sau khi người dùng nhấn phím không phải phím bổ trợ trên bàn phím. Sự kiện này xảy ra ngay khi nhấn phím, và không liên quan đến phím đó được giữ hay được nhả sau đó. Các phím bổ trợ là shift hoặc ctrl.
-<input type="text" id="content">
-<p id="text"></p>
-<script>
-    var display = document.getElementById("content");
-    var text = document.getElementById("text");
-    display.addEventListener('keypress', function (event){
-           if(event.key === 'Enter'){
-                text.innerHTML = display.value;
-                display.value = ''; // làm trống ô input
-                }
-          })
-        </script>
-
+input.addEventListener("input", (event) => {
+  output.innerText = event.target.value;
+});
+```
 animationstart || onanimationstart
 Xảy ra khi hoạt ảnh CSS bắt đầu.
 <div></div>

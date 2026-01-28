@@ -1,17 +1,33 @@
-- [width](#width)
-- [height](#height)
+- [w \& h \& min-h-screen](#w--h--min-h-screen)
 - [margin](#margin)
 - [Padding](#padding)
+- [flex](#flex)
+  - [basis](#basis)
+  - [gap](#gap)
+  - [items-center](#items-center)
+  - [justify-start](#justify-start)
+  - [justify-center](#justify-center)
+  - [justify-end](#justify-end)
+  - [justify-between](#justify-between)
+  - [justify-around](#justify-around)
+  - [justify-evenly](#justify-evenly)
+  - [items-start](#items-start)
+  - [items-end](#items-end)
+  - [items-stretch](#items-stretch)
+  - [flex-wrap](#flex-wrap)
+- [fixed (dính vào màn hình)](#fixed-dính-vào-màn-hình)
+- [min](#min)
 ---
-# width
+# w & h & min-h-screen
+```bash
+- min-h-screen  : chiều cao ít nhất bằng màn hình (= min-height: 100vh).
+```
 **Ex: Đặt width = 200px cho div trong ReactJs**
 ```js
 <div className="w-[200px]">Nội dung</div>
 <div className="w-48">...</div>  // 48x4 = 192px
 <div className="w-52">...</div>  // 52x4 = 208px
 ```
-
-# height
 
 # margin
 **Ex1**
@@ -118,6 +134,7 @@ basis-(<custom-property>)
 flex-basis: var(<custom-property>);
 basis-[<value>]
 flex-basis: <value>;
+```
 ## gap 
 ```bash
 - gap = khoảng trống giữa các con (margin = khoảng trống quanh từng thằng)
@@ -199,3 +216,4 @@ Overlay
 Modal
 
 Hover effect
+# min

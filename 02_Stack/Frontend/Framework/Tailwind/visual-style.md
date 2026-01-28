@@ -154,3 +154,13 @@ border-double
 <div className="border border-slate-300 rounded-md p-4">
   Card
 </div>
+
+# text 
+```bash
+- shadow-sm	    : bóng rất nhẹ
+- shadow	    : bóng mặc định
+- shadow-md	    : bóng vừa
+- shadow-lg	    : bóng rõ, sâu
+- text-xl	    : bóng rất sâu
+- shadow-2xl	: bóng cực sâu
+```

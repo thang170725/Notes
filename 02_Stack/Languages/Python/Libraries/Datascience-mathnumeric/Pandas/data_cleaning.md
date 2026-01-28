@@ -1,3 +1,95 @@
+- [.rename()](#rename)
+- [.drop()](#drop)
+- [.duplicated()](#duplicated)
+- [drop\_duplicates()](#drop_duplicates)
+---
+# .rename()
+```bash
+- Dùng để đổi tên cột hoặc chỉ mục của dataframe.
+```
+**Syn**
+```bash
+DataFrame.rename(
+    mapper=None,
+    *,
+    index=None,
+    columns=None,
+    axis=None,
+    copy=None,
+    inplace=False,
+    level=None,
+    errors='ignore'
+
+- errors
+    + ignore' (mặc định): không lỗi nếu tên không tồn tại
+    + 'raise': báo lỗi nếu không tìm thấy tên cần đổi
+)
+```
+**Ex**
+```python
+import pandas as pd
+
+data = {
+    "user_name": ['thang', 'minh'],
+    "user_email": ['leducthang', 'nguyenngocminh']
+}
+
+mapping = {
+"user_name": "name",
+"user_email": "email"
+}
+
+df = pd.DataFrame(data)
+df = df.rename(columns=mapping)
+
+print(df)
+
+#     name           email
+# 0  thang      leducthang
+# 1   minh  nguyenngocminh
+```
+# .drop()
+```bash
+- Xóa hàng (row) hoặc cột (column) khỏi DataFrame.
+```
+**Syn**
+```bash 
+DataFrame.drop(labels=None, axis=0, inplace=False)
+    + labels: Tên hàng hoặc cột cần xóa.
+    + axis: Xác định loại đối tượng cần xóa. 0 hoặc index – xóa theo hàng, 1 hoặc columns – xóa theo cột.
+    + inplace: False (mặc định) trả về một bản sao mới của dataframe. True là thay đổi trực tiếp trên DataFrame gốc.
+```
+**Ex**
+```python
+import pandas as pd
+
+# dữ liệu gốc dạng chuỗi
+df = pd.DataFrame({
+    'name': ['Lan', 'Mai', 'Huy'],
+    'age': [19, 20, 21]}
+)
+
+print("DataFrame ban đầu\n", df)
+
+newDf = df.drop('age', axis=1) # xóa cột age
+print(newDf)
+
+newDf1 = df.drop(0, axis=0) # xóa hàng đầu tiên
+print(newDf1)
+
+# DataFrame ban đầu
+# name  age
+# 0  Lan   19
+# 1  Mai   20
+# 2  Huy   21
+#  name
+# 0  Lan
+# 1  Mai
+# 2  Huy
+# name  age
+# 1  Mai   20
+# 2  Huy   21
+```
 # .duplicated()
 ```bash
 - Để phát hiện dòng trùng lặp trong DataFrame.

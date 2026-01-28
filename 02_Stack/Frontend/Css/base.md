@@ -1,3 +1,6 @@
+- [Cấu trúc](#cấu-trúc)
+---
+# Cấu trúc
 ```bash
 - layout-spacing.md     : "Display, Flexbox, Grid, Margin, Padding, Width/Height, Position, Z-index."
 - typograpy-color.md    : "Font-family, Size, Weight, Line-height, Text-align, Color, Opacity."
@@ -5,7 +8,7 @@
 - interaction-motion.md : "Hover, Active, Focus, Transition, Animation (@keyframes), Transform."
 - practice_cases.md     : "Code mẫu: Card UI, Navigation bar, Centering a div, Responsive Layout."
 ```
-# Chi tiết
+**Chi tiết**
 ```bash
 1. layout-spacing.md
 - Nhiệm vụ: Quản lý khung xương và khoảng cách của trang web.
@@ -18,7 +21,12 @@
 5. practice_cases.md
     + Nhiệm vụ: Lưu trữ các Component mẫu và các bài toán thực tế kết hợp nhiều thuộc tính.
 ```
-
+# Ways CSS
+```bash
+- inline: Viết thẳng vào thẻ html thông qua thuộc tính style=” …”.
+- external: Viết vào file css riêng rồi link vào html. (khuyến cáo sử dụng).
+- internal: Viết vào thẻ <head> … </head> thông qua thẻ <style> … </style> trong file html.
+```
 
 
 
@@ -771,44 +779,7 @@ value:
     • None: không hiển thị lên màn hình
     • Initial: cài đặt giá trị mặc định
     • Inherit: kế thừa thuộc tính của phần tử cha
-CSS Position
-Chỉ định loại phương pháp định vị được sử dụng cho một phần tử.
-Cú pháp:
-position: value;
-value:
-    • static: Mặc định, sẽ hiển thị theo đúng thứ tự của nó.
-    • relative: Định vị tuyệt đối, lúc này các thẻ bên trong coi là thẻ cha.
-    • absolute: Định vị tương đối theo thẻ cha, có thể sử dụng các giá trị top, right, left, bottom hoặc number để thiết lập vị trí theo thẻ cha.
-    • fixed: Định vị tương đối cho cửa sổ trình duyệt, khi kéo thanh cuộn nó không bị ẩn đi.
-    • Sticky: Nếu đi kèm với top: 0 khi scroll sẽ dính ở trên đầu website.
-    • inherit: Thừa hưởng thuộc tính của phần tử cha.
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-        body > div{
-            position: relative;
-            width: 100px;
-            height: 100px;
-            background-color: #000;
-        }
-        div > div{
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background-color: #f00;
-        }
-    </style>
-</head>
-<body>
-    <div>
-        <div></div>
-    </div>
-</body>
-</html>
+
 
 CSS z-index
 Đưa ra cấp độ hiển thị. cái nào được hiển thị đè lên trước cái nào. Thẻ nào có giá trị cao thì nằm phía trên giá trị thấp thì nằm phía dưới. cần khai báo position.

@@ -6,28 +6,28 @@
   - [3](#3)
 - [Gán](#gán)
 ---
-# console.log()
-Dùng để in giá trị của phân tử nào đó ra ngoài ô Console của Inspect Element. Áp dụng cho tất cả các loại dữ liệu.
-**Cú pháp** 
+# console.log() & document.write()
 ```bash
-console.log(value);
+- console.log       : In giá trị ở ô Console của Inspect Element.
+- document.write    : In giá trị nên trình duyệt người dùng.
 ```
-
-# document.write()
-In giá trị nên trình duyệt người dùng. Thuộc tính này được khuyến cáo chỉ sử dụng để testing.
-**Cú pháp** 
-```javascript
-document.write(value);
+**Syn** 
+```bash
+- console.log(value);
+- document.write(value);
 ```
-
 # window.alert() | alert() & confirm() & prompt()
-In ra một bảng thông báo có nút OK, Cancel, form lấy thông tin người dùng.
+```bash
+- alert : In ra một bảng thông báo.
+```
 **Syn**
 ```js
 alert("I am a robot"); // window.alert(“I am a robot”);
 ```
-typeof
-Để kiểm tra kiểu dữ liệu của biến.  
+# typeof
+```bash
+- Để kiểm tra kiểu dữ liệu của biến.  
+```
 Cú pháp: typeof variable;
 Xử lý số
 Number()
@@ -395,17 +395,7 @@ am
 from
 Viet
 Nam
-.trim()
-Để xóa khoảng trắng ở 2 đầu của chuỗi.
-let a = "    Hê lô   ";
-console.log(a);
-console.log(a.trim());
-    Hê lô
-Hê lô
-trimstart()
-Để xóa khoảng trắng ở bên trái.
-trimEnd()
-Để xóa khoảng trắng ở bên phải hay vị trí cuối của chuỗi.
+
 .padStart()
 Thêm một ký tự hoặc một chuỗi nào đó vào phần đầu của chuỗi.
 Cú pháp:
@@ -785,39 +775,7 @@ var languages = ['Java', 'C++', 'Javascript'];
 document.write(languages);
 
 
-Objects - Dictionary
-Trên thực tế thường khai báo các đối tượng bằng từ khóa const.
-Cú pháp:
-    • const | let | var <name> = new Object(key: value1, key: value2, …);
-    • const | let | var <name> = new Object();
-    • const | let | var <name> = { key: value1, key: value2, …};
-    • const | let | var <name> = {};
-Thêm key mới vào Object
-Dùng để thêm key-value mới vào khi Object đã được tạo từ trước.
-Cú pháp:
-    • <name>.key = value;
-    • <name>[‘key’] = value;
-    • <name>[“key”] = value;
-Lấy value
-Dùng để lấy giá trị của một key nào đó.
-Cú pháp:
-    • <name>.key;
-    • <name>[‘key’];
-Xóa thuộc tính trong Object
-Để xóa một key ra khỏi Object.
-Cú pháp:
-    • delete <name>.key;
-    • delete <name>[‘key’];
-Lưu ý: khi key là một hàm thì phải thêm () vào sau key.
-Tạo môt đối tượng rỗng, thêm các key  (name, age,  address) vào đối tượng đó và gắn giá trị.  Xuất name của đối tượng sau đó xóa bỏ key name và xuất cả Object lên màn hình.
- var Obj = {};
- Obj.name = "Jason";
- Obj['age'] = 23;
- Obj.address = "36 London England";
- document.write(Obj.name + '<br/>');
- delete Obj.name;
- document.write(Obj.name + Obj.age + Obj.address);
- // Obj.name + " " +  Obj.age + " " + Obj.address
+
 
 Object constructor
 <!DOCTYPE html>

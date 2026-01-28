@@ -5,6 +5,7 @@
 - [margin](#margin)
 - [padding](#padding)
 - [text-align \& text-align-last](#text-align--text-align-last)
+- [Position](#position)
 ---
 # Comment 
 ```bash
@@ -39,13 +40,7 @@ div{
             background-color: aqua;
         }
 
-Selector – Declaration
-
 Selector: Có thể là tên thẻ, id (#) hoặc class (.)
-Ways CSS
-    • inline: Viết thẳng vào thẻ html thông qua thuộc tính style=” …”.
-    • external: Viết vào file css riêng rồi link vào html. (khuyến cáo sử dụng).
-    • internal: Viết vào thẻ <head> … </head> thông qua thẻ <style> … </style> trong file html.
 
 *{}
 Nếu muốn áp dụng một thuộc tính nào đó cho tất cả các thẻ trong tài liệu.
@@ -300,3 +295,31 @@ value:
     • Text-top
     • Text-bottom
     • Inherit
+# Position
+```bash
+- Chỉ định loại phương pháp định vị được sử dụng cho một phần tử.
+```
+**Syn**
+```bash
+position: value;
+
+- static: Mặc định, sẽ hiển thị theo đúng thứ tự của nó.
+- relative: Định vị tuyệt đối, lúc này các thẻ bên trong coi là thẻ cha.
+- absolute: Định vị tương đối theo thẻ cha.
+- fixed: Định vị tương đối cho cửa sổ trình duyệt, khi kéo thanh cuộn nó không bị ẩn đi.
+- Sticky: Nếu đi kèm với top: 0 khi scroll sẽ dính ở trên đầu website.
+- inherit: Thừa hưởng thuộc tính của phần tử cha.
+```
+**Ex**
+```html
+<div></div>
+```
+```css
+div{
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: fixed;
+    top: 0; /*khi dùng fix có thể di chuyển bằng, top, left, ... */
+}
+```
