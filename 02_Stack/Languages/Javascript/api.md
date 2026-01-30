@@ -1,14 +1,18 @@
+- [Promise](#promise)
 - [async \& fetch](#async--fetch)
   - [GET data JSON bằng async + fetch](#get-data-json-bằng-async--fetch)
   - [POST data JSON bằng async + fetch](#post-data-json-bằng-async--fetch)
 - [FormData() \& .blob() \& URL.createObjectURL()](#formdata--blob--urlcreateobjecturl)
     - [Demo POST ảnh về server xử lý rồi lại chuyển lại về giao diện](#demo-post-ảnh-về-server-xử-lý-rồi-lại-chuyển-lại-về-giao-diện)
+- [localStorage](#localstorage)
+- [.setItem() \& .getItem() \& .removeItem() \& .clear()](#setitem--getitem--removeitem--clear)
 ---
-## API trong Javascript
-Cách viết Promise
+# Promise
+```bash
 Đây là cách viết xử lý API truyền thống bằng chuỗi promise.
-
-Ví dụ:
+```
+**Ex**
+```js
 // 1. Tạo dữ liệu muốn gửi đi
 const data = {
   message: "Xin chào AI!"
@@ -35,6 +39,7 @@ fetch('http://localhost:5000/api', {
 .catch(error => {
   console.error('Lỗi khi gọi API:', error);
 });
+```
 # async & fetch
 ```bash
 - fetch : Là một API dùng để gửi các yêu cầu HTTP (GET, POST, PUT, DELETE, …) đến server và xử lý kết quả trả về. 
@@ -133,4 +138,64 @@ async function upload() {
         <img src="${imageUrl}" />
     `
 }
+```
+# localStorage 
+```bash
+- Dùng để lưu dữ liệu ngay trên trình duyệt. -> Dung lượng khoảng 5–10MB
+- Dữ liệu không mất khi refresh trang hoặc tắt trình duyệt
+- Chỉ lưu được chuỗi (string)
+```
+# .setItem() & .getItem() & .removeItem() & .clear()
+```bash
+- setItem     : Để lưu dữ liệu.
+- getItem     : Để lấy dữ liệu.
+- removeItem  : Xóa 1 dữ liệu ở localStorage.
+- clear       : Xóa tất cả dữ liệu.
+```
+**Ex: Lưu tên người dùng**
+```html
+<input type="text" id="nameInput" placeholder="Nhập tên">
+<button onclick="saveName()">Lưu tên</button>
+<button onclick="getName()">Lấy tên</button>
+<button onclick="removeName()">Xoá tên</button>
+<button onclick="clearAll()">Clear tất cả</button>
+
+<p id="result"></p>
+```
+```js
+function saveName() {
+  const name = document.getElementById("nameInput").value;
+  localStorage.setItem("username", name);
+  alert("Đã lưu tên!");
+}
+
+function getName() {
+  const name = localStorage.getItem("username");
+  document.getElementById("result").innerText =
+    name ? "Tên đã lưu: " + name : "Chưa có tên!";
+}
+
+function removeName() {
+  localStorage.removeItem("username");
+  alert("Đã xoá tên!");
+}
+
+function clearAll() {
+  localStorage.clear();
+  alert("Đã xoá toàn bộ localStorage!");
+}
+```
+**Ex2: lưu object / array**
+```js
+const user = {
+  name: "Thắng",
+  age: 22
+};
+
+localStorage.setItem("user", JSON.stringify(user));
+```
+**Ex3: lấy object**
+```js
+const user = JSON.parse(localStorage.getItem("user"));
+console.log(user.name); // Thắng
 ```

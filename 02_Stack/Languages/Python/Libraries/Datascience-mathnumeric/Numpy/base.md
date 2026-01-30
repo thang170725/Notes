@@ -1,3 +1,55 @@
+- [Cấu trúc thư mục](#cấu-trúc-thư-mục)
+- [Installation](#installation)
+- [.ndim](#ndim)
+- [.tolist()](#tolist)
+- [xác suất xuất hiện mặt 6 chấm khi tung 5 lượt mỗi lượt lại tung 10 lần](#xác-suất-xuất-hiện-mặt-6-chấm-khi-tung-5-lượt-mỗi-lượt-lại-tung-10-lần)
+- [trả về phương sai tổng thể](#trả-về-phương-sai-tổng-thể)
+- [Tổng số điểm](#tổng-số-điểm)
+- [Sinh ngẫu nhiên (x, y) trong \[-1, 1\]](#sinh-ngẫu-nhiên-x-y-trong--1-1)
+- [Đếm số điểm nằm trong đường tròn](#đếm-số-điểm-nằm-trong-đường-tròn)
+- [Tính tỉ lệ và xấp xỉ pi](#tính-tỉ-lệ-và-xấp-xỉ-pi)
+---
+# Cấu trúc thư mục
+```bash
+Numpy/
+├── 01_creation_initialization.md  # Khởi tạo: array, zeros, full, empty, zeros_like, frombuffer
+├── 02_shape_manipulation.md      # Cấu trúc & Hình dáng: shape, size, reshape, flatten, copy, view
+├── 03_math_statistics.md         # Toán học & Thống kê: sum, mean, std, median, max/min, power/sqrt
+├── 04_logic_searching.md         # Logic & Tìm kiếm: argmax, argmin, where, (Check version)
+└── 05_linalg_advanced.md         # Đại số tuyến tính: norm, dot, v.v... & DataType (astype)
+```
+**Chi tiết**
+```bash
+01. creation_initialization.md (Khởi tạo)
+Gom từ folder Create và file lẻ: array, empty, full, zeros, zeros_like, frombuffer-tobytes.
+
+Lý do: Đây là bước đầu tiên để có một đối tượng ndarray.
+
+02. shape_manipulation.md (Biến đổi hình dáng)
+Gom từ folder Return: shape, size, reshape, flatten.
+
+Gom thêm: copy, view.
+
+Mẹo: Đặt copy và view cạnh nhau để ghi chú về việc "tiết kiệm bộ nhớ" (View) so với "tạo bản sao" (Copy).
+
+03. math_statistics.md (Toán học)
+Gom toàn bộ folder Math: sum, mean, median, std, max, min, power, sqrt.
+
+Lý do: Đây là các hàm tính toán trên các trục (axis) của mảng.
+
+04. logic_searching.md (Logic)
+Gom: argmax, argmin.
+
+Mẹo: Nhét luôn thông tin về __version__ vào cuối file này hoặc file base.md vì nó rất ngắn.
+
+Lý do: Những hàm này trả về vị trí (index) hoặc điều kiện logic thay vì giá trị tính toán đơn thuần.
+
+05. linalg_advanced.md (Đại số tuyến tính)
+Gom folder Linalg: norm, và các bài tập exercise.
+
+Gom thêm: astype (vì nó liên quan đến việc ép kiểu bộ nhớ cho các phép tính đại số phức tạp).
+```
+# Installation
 ```bash
 - Là thư viện toán học, tính toán mạnh về mảng nhiều chiều, vector. 
 - pip install numpy. import numpy as np

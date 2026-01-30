@@ -1,9 +1,57 @@
 - [FastAPI() \& add\_middleware](#fastapi--add_middleware)
+- [get \& post \& .put()](#get--post--put)
   - [lấy data Json từ client](#lấy-data-json-từ-client)
 - [APIRouter() \& .include\_router() \& create\_app()](#apirouter--include_router--create_app)
+  - [@router.post()](#routerpost)
   - [lấy data Json từ client](#lấy-data-json-từ-client-1)
 ---
 # FastAPI() & add_middleware
+# get & post & .put()
+```bash
+- put   : Cập nhật dữ liệu đã tồn tại
+- post  : Tạo mới
+```
+**Ex1: put**
+**User trong database**
+```json
+{
+  "id": 1,
+  "username": "thang",
+  "email": "thang@gmail.com",
+  "age": 20
+}
+```
+```python
+@router.put("/users/{user_id}", response_model=UserSchema)
+def update_user(
+    user_id: int,
+    payload: UserUpdateSchema,
+    db: Session = Depends(get_db)
+):
+    user = db.query(User).filter(User.id == user_id).first()
+
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    user.username = payload.username
+    user.email = payload.email
+    user.age = payload.age
+
+    db.commit()
+    db.refresh(user)
+
+    return user
+```
+**Payload gửi từ frontend**
+```json
+{
+  "username": "thang123",
+  "email": "thang123@gmail.com",
+  "age": 22
+}
+
+// Toàn bộ user bị thay đổi theo payload
+```
 ## lấy data Json từ client 
 ```python
 from backend.schemas.user import UserSchema
@@ -29,7 +77,9 @@ async def fetch_data(user: UserSchema):
 ```
 # APIRouter() & .include_router() & create_app()
 ```bash
-- APIRouter         : Thay vì viết tất cả API trong main.py, ta nhóm lại để code gọn, Dễ mở rộng, Chuẩn kiến trúc (layered / clean).
+- APIRouter
+    + Thay vì viết tất cả API trong main.py, ta nhóm lại để code gọn, Dễ mở rộng, Chuẩn kiến trúc (layered / clean).
+    + from fastapi import APIRouter
 - .include_router() : Gắn router vào app
 ```
 **Syn: APIRouter**
@@ -41,6 +91,14 @@ router = APIRouter(prefix="/user", tags=["User"])
     + Dễ versioning (/api/v1/user)
 - tags=["User"]: Chỉ dùng cho Swagger UI /docs
     + Nó giúp: nhóm API, dễ đọc, không ảnh hưởng runtime
+```
+## @router.post()
+**Syn**
+```bash
+@router.post("", response_model=Token)
+
+- response_model    : Nói với FastAPI rằng: “API này khi trả response thì phải có shape giống Token”
+- Token             : Là Pydantic model
 ```
 ## lấy data Json từ client
 ```bash

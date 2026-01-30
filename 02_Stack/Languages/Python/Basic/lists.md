@@ -7,6 +7,8 @@
   - [xóa phần tử nhỏ hơn 2 trong list](#xóa-phần-tử-nhỏ-hơn-2-trong-list)
 - [max()](#max)
 - [\[\]](#-1)
+- [sort() \& sorted](#sort--sorted)
+  - [Sắp xếp danh sách sự kiện](#sắp-xếp-danh-sách-sự-kiện)
 - [sum()](#sum)
 - [Ép từ dict -\> list of dict](#ép-từ-dict---list-of-dict)
 ---
@@ -176,13 +178,122 @@ a = [1,2,3,4]
 a.reverse()
 
 print(a)
-```# sort() & .sort()
+```
+# sort() & sorted
+```bash
 Sắp xếp các phần tử trong mảng. Nếu là chuỗi thì sắp xếp theo thứ tự alphabet.
-**Cú pháp**
-```text
-sort(a) | a.sort(reverse=True)
+```
+**Syn**
+```bash
+a.sort(reverse=True)
+
 - a: Là tên biến
 - reverse=True: Sắp giảm. Mặc định là False
+```
+Sắp xếp list dict (hay dùng nhất)
+🔹 Ví dụ:
+events = [
+    {'name': 'A', 'people': 50},
+    {'name': 'B', 'people': 20},
+    {'name': 'C', 'people': 100}
+]
+
+✅ Sắp xếp tăng dần theo key
+events.sort(key=lambda x: x['people'])
+
+
+➡️ Kết quả: 20 → 50 → 100
+
+✅ Giảm dần
+events.sort(key=lambda x: x['people'], reverse=True)
+
+✅ Sắp xếp theo nhiều tiêu chí
+
+Ví dụ:
+
+tăng theo people
+
+nếu bằng nhau → tăng theo name
+
+events.sort(key=lambda x: (x['people'], x['name']))
+
+3️⃣ Sắp xếp dict of list
+
+Ví dụ:
+
+data = {
+    'A': [5, 2, 9],
+    'B': [1, 8, 3]
+}
+
+🔹 Sắp xếp từng list bên trong
+for v in data.values():
+    v.sort()
+
+🔹 Sắp xếp dict theo tổng giá trị của list
+sorted_data = dict(
+    sorted(data.items(), key=lambda x: sum(x[1]))
+)
+
+4️⃣ Sắp xếp list object (class)
+🔹 Class ví dụ
+class Event:
+    def __init__(self, name, people):
+        self.name = name
+        self.people = people
+
+events = [
+    Event("A", 50),
+    Event("B", 20),
+    Event("C", 100)
+]
+
+✅ Sắp xếp theo thuộc tính
+events.sort(key=lambda e: e.people)
+
+✅ Giảm dần
+events.sort(key=lambda e: e.people, reverse=True)
+
+5️⃣ Dùng operator.attrgetter (đẹp & chuyên nghiệp)
+from operator import attrgetter
+
+events.sort(key=attrgetter('people'))
+
+
+👉 Thường được chấm cao hơn trong bài thi 😎
+
+6️⃣ Sắp xếp theo key không chắc tồn tại (an toàn)
+events.sort(key=lambda x: x.get('people', 0))
+
+7️⃣ Những lỗi hay gặp khi đi thi ❌
+
+❌ Quên key=
+
+events.sort(lambda x: x['people'])  # SAI
+
+
+❌ Viết nhầm key
+
+x['pepple']  # crash ngay
+
+
+❌ Gán lại sort()
+
+events = events.sort()  # events = None
+## Sắp xếp danh sách sự kiện
+```bash
+# cột 1 là địa điểm, cột 2 là số lượng khách.
+data = {
+    'event1': ['hanoi', 30],
+    'event2': ['hanoi', 10],
+    'event3': ['hanoi', 40],
+    'event4': ['hanoi', 35],
+}
+```
+```python
+sorted_data = dict(
+    sorted(data.items(), key=lambda item: item[1][1])
+)
 ```
 # sum()
 **EX**

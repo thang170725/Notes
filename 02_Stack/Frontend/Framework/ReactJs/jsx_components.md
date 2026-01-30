@@ -1,3 +1,6 @@
+- [React JSX](#react-jsx)
+- [Props](#props)
+---
 # React JSX
 ```bash
 - Cho phép viết các đoạn mã HTML trong React một cách dễ dàng và có cấu trúc hơn. React sử dụng JSX để xây dựng bố cục thay vì javascript thông thường. JSX giúp tạo ra các React element.
@@ -171,4 +174,36 @@ const results = <>
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(results)
+
+# Props
+```bash
+- Là các đối số được truyền vào các thành phần React. Props được truyền vào các thành phần thông qua các thuộc tính HTML. Props là viết tắt của properties.
+```
+**Ex**
+**src/App.jsx**
+```js
+function User(props){
+  return <p>{props.name} - {props.age}</p>
+}
+
+export default function App() {
+  return (
+    <>
+      <User name="Thắng" age={22}/>
+    </>
+  )
+}
+```
+**src/main.jsx**
+```js
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App.jsx'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+)
+```
 

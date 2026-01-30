@@ -1,6 +1,9 @@
 - [declarative\_base \& Column \& Data-type](#declarative_base--column--data-type)
 - [sessionmaker()](#sessionmaker)
 - [.add() \& .commit() \& refresh()](#add--commit--refresh)
+- [.query() \& .first() \& .filter() \& .all()](#query--first--filter--all)
+- [like()](#like)
+- [filter\_by()](#filter_by)
 ---
 # declarative_base & Column & Data-type
 **Không có declarative_base**
@@ -94,3 +97,35 @@ def register(
         "username": user.username
     }
 ```
+# .query() & .first() & .filter() & .all()
+```bash
+- query     : Nghĩa là: “Tôi muốn lấy dữ liệu từ bảng users”
+- first     : Nghĩa là: “Lấy 1 dòng đầu tiên hoặc None”
+- all       : Lấy tất cả dòng.
+- filter    : Nghĩa là: “Lọc theo điều kiện”
+```
+**Syn: query**
+```bash
+db.query(User) # SELECT * FROM users
+```
+**Syn: filter**
+```bash
+.filter(User.username == "admin") # WHERE username = 'admin'
+```
+**Ex**
+**Model**
+```python
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True)
+    username = Column(String)
+    age = Column(Integer)
+
+user = db.query(User).filter(User.username == "thang").first() # SELECT * FROM users WHERE username = 'thang' LIMIT 1;
+
+# user là object User
+# Hoặc None
+```
+# like()
+# filter_by()

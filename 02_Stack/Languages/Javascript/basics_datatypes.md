@@ -1468,68 +1468,7 @@ setMinutes()
 setSeconds()
 Để cài đặt một giây nào đó.
 Thuật toán cập nhật thứ, ngày, tháng, năm bằng javascript
-JS If else
-if - else if - else 
-if(điều_kiện){…}
-else if(điều_kiện){…}
-else{…}
-JS Switch
-switch case
-switch(tham_số_truyền_vào)
-{
-	case value_1: {…break;}
-	case value_2: {…break;}
-	…
-	default: {…}
-}
-JS Loop for 
-Là vòng lặp biết trước số lần lặp.
-Cú pháp:
-for(<khai báo biến>; <điều kiện dừng>; <điều kiện lặp>) {…}
-JS Loop for in
-Thích hợp cho việc lặp qua mảng, chuỗi, nhóm các phần tử.
-JS Loop for Of
-Lặp qua các giá trị của một đối tượng có thể lặp lại.
-Nó cho phép bạn lặp qua các cấu trúc dữ liệu có thể lặp lại như mảng, chuỗi, map, NodeList, …
-function main(){
-   var arr = [1,2,3,4,5,6,7,8,9,10];
-   for(let i of arr) {
-      console.log(i);
-   }
-}
-main()
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-JS loop While
-Vòng lặp chưa biết trước số lần lặp.
-while(điều_kiện){
-…
-Điều kiện lặp;
-}
-
-Vòng lặp, lặp ít nhất một lần.
-cú pháp:
-do{
-…
-Điều kiện lặp;
-} while(điều kiện);
-JS break
-forEach() 
-Dùng để lặp qua các phần tử thường sử dụng trong mảng.
-break
-Để phá vỡ vòng lặp kể cả khi điều kiện vẫn đang đúng.
-continue
-Tiếp tục một vòng lặp khác và bỏ qua các đoạn code phía sau nó trong cùng vòng lặp.
-Javascript Label
 JS Sets
 Là một tập hợp các giá trị duy nhất.
 Mỗi giá trị chỉ có thể xuất hiện 1 lần trong Set.
@@ -1753,41 +1692,7 @@ function main(){
 }
 main();
 1366 645
-localStorage || window.localStorage
-Cho phép lưu các cặp key – value trong trình duyệt.
-setItem()
-Để lưu dữ liệu.
-setItem()
-Để đọc dữ liệu.
-removeItem()
-Xóa dữ liệu ở localStorage.
-clear()
-Xóa tất cả dữ liệu.
-Ví dụ về localStorage
-File 1
 
-File 2
-
-<input type="text" id="input">
-    <button id="send">Send</button>
-
-let data = document.getElementById('input');
-let send = document.getElementById('send');
-send.onclick = function(){
-     const text = data.value;
-     window.localStorage.setItem('Data', text);
-}
-
-<p></p>
-
-let data = window.localStorage.getItem('Data');
-if(data){
-    let t = document.getElementsByTagName('p')[0];
-    t.innerText = data;
-    localStorage.removeItem('Data');
-}
-
-JS Web APIs
 JS AJAX
 JS JSON
 JS vs jQuery
@@ -2079,63 +1984,7 @@ Element.children;
 setAttribute
 Để gán giá trị cho thẻ input thì ta có hai cách, thứ nhất là sử dụng thuộc tính value, thứ hai là sử dụng phương thức setAttribute.
 Cài đặt thời gian
-setTimeout()
-Để thiết lập một khoảng thời gian nào đó sẽ thực hiện một nhiệm vụ nào đó và nó chỉ thực hiện đúng một lần. hoạt động như ngăn xếp, sau khi code js được thực hiện thì có mới được thực hiện. Hàm setTimeout,… chỉ được sử dụng với function.
-Cú pháp:
-setTimeout(function, time);
-    • function: Là nội dung cần thực hiện, đây là một hàm.
-    • time: Là khoảng thời gian bao nhiêu (tính bằng mili giây) thì function đó sẽ thực hiện.
-setInterval()
-Chức năng giống như hàm setTimeout(), tuy nhiên số lần thực hiện lã mãi mãi.
-clearInterval() 
-Xóa đi một nhiệm vụ nào đó của setTimeout.
 
-<button>Dừng</button>
-    <p></p>
-
-let i = 0;
-let text = document.getElementsByTagName("p");
-function time() {
-    text[0].innerHTML = i++;
-}
-function main() {
-    let res = setInterval(time, 1000);
-    let stop = document.getElementsByTagName("button");
-    stop[0].onclick = function (){
-        clearInterval(res)
-    }
-}
-main();
-
-Bài tập
-Thuật toán đồng hồ bấm giờ
-let second = document.getElementById("seconds");
-let minute = document.getElementById("minutes");
-let count = 56;
-let mis = 0;
-function Minute(){
-    if(count == "60"){
-        count = 0;
-        mis += 1;
-        minute.innerHTML = mis;
-    }
-}
-function TimeMath(){
-    count++;
-    if(count < 10){
-        count = "0" + count;
-    }
-    second.innerHTML = count;
-    Minute();
-}
-function main(){
-    let res = setInterval(TimeMath, 1000)
-    let but = document.getElementById("stop");
-    but.onclick = function (){
-        clearInterval(res);
-    }
-}
-main()
 Websocket
 new WebSocket()
 Dùng để tạo websocket, mở kết nối chưa gửi, chưa nhận gì cả.

@@ -1,7 +1,11 @@
+- [useState()](#usestate)
+- [useEffect](#useeffect)
+---
 # useState()
 ```bash
 - Dữ liệu thay đổi theo thời gian
 - React sẽ tự re-render khi state thay đổi. State đổi → UI tự đổi
+- Cái nào ảnh hưởng đến UI dùng useState.
 ```
 **Ex**
 **src/App.jsx**
@@ -222,12 +226,7 @@ const root = ReactDOM.createRoot(container);
 root.render(<Box/>);
 React Forms
 React sử dụng biểu mẫu để cho phép người dùng tương tác với trang web.
-React Router
-Tạo ứng dụng React không bao gồm định tuyến trang. React Router là giải pháp phổ biến nhất.
-Để thêm React Router vào ứng dụng của bạn, hãy chạy lệnh này trong terminal từ thư mục gốc của ứng dụng.
-npm I –D react-router-dom
-hoặc
-npm i –D react-router-dom@latest
+
 React Memo
 Sử dụng momo sẽ khiến React bỏ qua việc render một thành phần nếu props của nó không thay đổi. Điều này có thể cải thiện hiệu suất.
 React CSS Styling
@@ -242,12 +241,18 @@ Hook thường thay thế các thành phần lớp, nhưng không có hoạch x�
 useState
 Cho phép chúng ta theo dõi trạng thái trong một thành phần hàm.
 Trạng thái thường đề cập đến dữ liệu hoặc thuộc tính cần theo dõi trong một ứng dụng.
-useEffect
-Cho phép bạn thực hiện các hiệu ứng phụ trong các thành phần của mình như là lấy dữ liệu, cập nhật trực tiếp DOM và bộ đếm thời gian.
-useEffect chấp nhận 2 đối số. Đối số thứ 2 tùy chọn.
+# useEffect
+```bash
+- Làm viện phụ sau khi vẽ UI.
+- useEffect = chạy code sau khi render xong
+```
+**syn**
+```bash
 useEffect(<function>, <dependency>)	
+
+```
 useContent
-useRef
+
 useReducer
 useMemo
 Custom Hooks

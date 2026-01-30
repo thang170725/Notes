@@ -1,7 +1,3 @@
-```bash
-- Dùng để xử lý Dict, set trong Python.
-```
----
 - [dictionary](#dictionary)
   - [{} \& dict](#--dict)
     - [Tạo một dictionaries với keys là mã sinh viên, values là điểm trung bình](#tạo-một-dictionaries-với-keys-là-mã-sinh-viên-values-là-điểm-trung-bình)
@@ -13,8 +9,13 @@
 - [.keys() \& # .values()](#keys---values)
 - [\[\] \& # .update()](#---update)
 - [.popitem()](#popitem)
+  - [\*\* (unpack dict)](#-unpack-dict)
   - [Exercise 1](#exercise-1)
 - [set](#set)
+- [.clear()](#clear)
+- [.discard()](#discard)
+- [\&](#)
+- [.update()](#update)
 ---
 # dictionary
 ## {} & dict
@@ -291,6 +292,7 @@ thisdict.popitem()
 
 print(thisdict) # {'brand': 'Ford', 'model': 'Mustang'}
 ```
+## ** (unpack dict)
 ## Exercise 1
 **Topic**
 ```bash

@@ -1,4 +1,5 @@
-- [document.addEventListener()](#documentaddeventlistener)
+- [document.addEventListener() \& removeEventListener()](#documentaddeventlistener--removeeventlistener)
+- [removeEvent](#removeevent)
 - [click|onclick \& dbclick|ondbclick](#clickonclick--dbclickondbclick)
   - [Tạo một chức năng tra cứu màu sắc](#tạo-một-chức-năng-tra-cứu-màu-sắc)
 - [mouseover|onmouseover \& mousemove|onmousemove \& mouseout|onmouseout](#mouseoveronmouseover--mousemoveonmousemove--mouseoutonmouseout)
@@ -6,19 +7,23 @@
 - [oninput|input](#oninputinput)
 - [keydown | onkeydown \& keypress | onkeypress](#keydown--onkeydown--keypress--onkeypress)
 - [target.value](#targetvalue)
-
+- [mousedown \& mouseup](#mousedown--mouseup)
+- [onSubmit](#onsubmit)
 ---
-
-# document.addEventListener()
-Gắn một trình xử lý sự kiện.
+# document.addEventListener() & removeEventListener()
+```bash
+- addEventListener    : Gắn một trình xử lý sự kiện.
+- removeEventListener : gỡ bỏ event đã add trước đó.
+```
 **Syn**
 ```bash
 document.addEventListener(event, function, (capture))
+
 - Event: sử dụng ‘click’ thay vì ‘onclick’, không sử dụng tiền tố ‘on’. Sử dụng tất cả các event trong HTML DOM Event Object Reference.
 - Function: chức năng sẽ chạy khi sự kiện xảy ra. Khi sự kiện xảy ra một đối tượng sự kiện sẽ được truyền cho hàm làm tham số đầu tiên. Loại đối tượng sự kiện phụ thuộc vào sự kiện được chỉ định. VD: ‘click’ thuộc về đối tượng MouseEvent. Lưu ý là function trong addEventListener() không cần ngoặc.
 - Capture: mặc định bằng false. True-trình xử lí được thực thi trong giai đoạn chụp. trình sử lí được thực thi trong giai đoạn sủi bọt.
 ```
-**Ex**
+**Ex1**
 ```html
 <button>BUTTON</button>
 ```
@@ -28,7 +33,36 @@ a[0].addEventListener('click', function (){
     alert("Hello World!!!");
 });
 ```
+**Ex2**
+```bash
+1. Click Bấm tôi → log
+2. Click Gỡ event
+3. Click lại Bấm tôi → ❌ không log nữa
+```
+```html
+<button id="btn">Bấm tôi</button>
+<button id="remove">Gỡ event</button>
+```
+```js
+<script>
+  const btn = document.getElementById("btn");
+  const removeBtn = document.getElementById("remove");
 
+  function handleClick() {
+    console.log("Đã click!");
+  }
+
+  // Gắn event
+  btn.addEventListener("click", handleClick);
+
+  // Gỡ event
+  removeBtn.addEventListener("click", () => {
+    btn.removeEventListener("click", handleClick);
+    console.log("Đã gỡ event");
+  });
+</script>
+```
+# removeEvent
 # click|onclick & dbclick|ondbclick
 Khi người dùng click hoặc dbclick thì trả về một result nào đó.
 
@@ -322,10 +356,25 @@ Loadeddata
 Loadedmetadata
 Loadstart
 Message
-Mousedown
+# mousedown & mouseup
+```bash
+- mousedown : Xảy ra khi bạn ấn chuột
+- mouseup   : xay ra khi nhả chuột
+```
+**Ex**
+```js
+<button id="btn">Bấm tôi</button>
+
+<script>
+  const btn = document.getElementById("btn");
+
+  btn.addEventListener("mousedown", () => {
+    console.log("Bạn vừa ẤN chuột");
+  });
+</script>
+```
 Mouseenter
 Mouseleave
-Mouseup
 Mousewheel
 Offline
 Online
@@ -388,20 +437,14 @@ Hiện thông báo là giá trị của thẻ select
 function Display(value){
      alert(value);
 
-onSubmit là gì (hiểu cho đúng)
-
-submit là event của <form>
-
-Khi bấm nút submit hoặc Enter → form emit event submit
-
-Mặc định: trình duyệt reload trang
-
-👉 JS dùng event.preventDefault() để chặn reload và tự xử lý logic
-
-2. Cách dùng onSubmit HIỆN ĐẠI (JS-only, chuẩn nhất)
-
-Giả sử form đã tồn tại trong DOM
-
+# onSubmit
+```bash
+- submit là event của <form>. Khi bấm nút submit hoặc Enter → form emit event submit
+- Mặc định: trình duyệt reload trang
+- JS dùng event.preventDefault() để chặn reload và tự xử lý logic
+```
+**Ex1**
+```js
 const form = document.querySelector('#myForm')
 
 form.addEventListener('submit', async (event) => {
@@ -412,11 +455,10 @@ form.addEventListener('submit', async (event) => {
   // xử lý logic ở đây
 })
 
-
-🔥 Đây là cách chuẩn – hiện đại – production
-
-3. Lấy dữ liệu từ form khi onSubmit
-Cách hiện đại nhất: FormData
+// Đây là cách chuẩn – hiện đại – production
+```
+**Ex3: Lấy dữ liệu từ form khi onSubmit**
+```bash
 const form = document.querySelector('#myForm')
 
 form.addEventListener('submit', async (event) => {
@@ -429,21 +471,18 @@ form.addEventListener('submit', async (event) => {
   console.log(data)
 })
 
+# Nếu form có:
+# name="email"
+# name="password"
 
-👉 Nếu form có:
-
-name="email"
-name="password"
-
-
-👉 data sẽ là:
-
-{
-  email: 'abc@gmail.com',
-  password: '123456'
-}
-
-4. onSubmit + fetch (thực tế nhất)
+# data sẽ là:
+# {
+#   email: 'abc@gmail.com',
+#   password: '123456'
+# }
+```
+**Ex4: onSubmit + fetch (thực tế nhất)**
+```js
 const form = document.querySelector('#myForm')
 
 form.addEventListener('submit', async (e) => {
@@ -470,60 +509,4 @@ form.addEventListener('submit', async (e) => {
     console.error(err)
   }
 })
-
-5. Vì sao KHÔNG nên dùng onsubmit = function()?
-
-❌ Cũ:
-
-form.onsubmit = function () {}
-
-
-❌ Inline HTML:
-
-<form onsubmit="handleSubmit()">
-
-
-✅ Hiện đại:
-
-form.addEventListener('submit', handleSubmit)
-
-
-👉 Lý do:
-
-tách logic khỏi HTML
-
-cho phép nhiều listener
-
-dễ maintain
-
-6. Những lỗi rất hay gặp
-❌ Quên preventDefault()
-
-→ page reload → mất data
-
-❌ Gắn submit cho button thay vì form
-
-→ Enter không hoạt động
-
-❌ Dùng click thay vì submit
-
-→ UX kém
-
-7. TL;DR (nhớ đúng 4 dòng)
-form.addEventListener('submit', (e) => {
-  e.preventDefault()
-  const data = Object.fromEntries(new FormData(form))
-})
-
-
-Nếu bạn muốn:
-
-validate form trước submit
-
-disable button khi submit
-
-debounce / chống submit nhiều lần
-
-onSubmit trong React / Vue so với JS thuần
-
-👉 nói thẳng cái bạn đang làm, mình chỉ đúng 1 cách tốt nhất, không lan man 👍
+```

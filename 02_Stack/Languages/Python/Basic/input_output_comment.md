@@ -1,9 +1,7 @@
 - [comment](#comment)
-- [input()](#input)
-- [print()](#print)
+- [input() \& print()](#input--print)
   - [Hiển thị list of dict ra dạng bảng đẹp](#hiển-thị-list-of-dict-ra-dạng-bảng-đẹp)
   - [Hiển thị list of list ra dạng bảng đẹp](#hiển-thị-list-of-list-ra-dạng-bảng-đẹp)
-- [Exercise](#exercise)
   - [Nhập tên (Dữ liệu dạng chữ)](#nhập-tên-dữ-liệu-dạng-chữ)
   - [Nhập số và thực hiện phép tính (Ép kiểu)](#nhập-số-và-thực-hiện-phép-tính-ép-kiểu)
   - [Nhập nhiều giá trị trên một dòng](#nhập-nhiều-giá-trị-trên-một-dòng)
@@ -15,22 +13,20 @@
 ```bash
 # content
 ```
-# input()
-**Syn**
+# input() & print()
+**Syn: input**
 ```bash
 variable = input(prompt) # kiểu dữ liệu là str
 
 - prompt    : Chuỗi ký tự để gợi ý.
 - variable  : Là biến dùng để lưu trữ dữ liệu mà người dùng nhập vào từ bàn phím.
 ```
-
-# print()
+**Syn: print**
 ```bash
 print(“…”, end=‘ ‘)
 
 - end: thêm dấu nào đó khi in
 ```
-
 ## Hiển thị list of dict ra dạng bảng đẹp
 **Ex1**
 **Resource**
@@ -158,9 +154,6 @@ def print_table_list(data):
         if idx == 0:
             print("-+-".join("-" * w for w in col_widths))
 ```
-
-# Exercise
-
 ## Nhập tên (Dữ liệu dạng chữ)
 ```bash
 Đây là cách dùng cơ bản nhất để lấy thông tin văn bản.

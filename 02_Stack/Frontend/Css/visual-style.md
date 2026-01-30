@@ -1,9 +1,8 @@
-```bash
-- Dùng để thiết kế hình dạng, phong cách cho box.
-```
----
 - [Box-shadow](#box-shadow)
 - [backround-image](#backround-image)
+- [border](#border)
+  - [border-style \& Border-width \& Border-color](#border-style--border-width--border-color)
+  - [border-top-style \& border-right-style \& border-bottom-style \& border-left-style](#border-top-style--border-right-style--border-bottom-style--border-left-style)
 - [Những website lấy icon](#những-website-lấy-icon)
 ---
 # Box-shadow
@@ -22,57 +21,19 @@ Trong đó:
     • initial: Thiết lập giá trị mặc định.
     • inherit: Kế thừa giá trị từ thẻ HTML cha.
 ```
-
 # backround-image
 ```bash
 - Để Thiết lập hình nền.
 ```
-Cú pháp:
-background-image: value, …;
-value:
-    • url(‘ ’): Truyền vào một link của hình ảnh đó đuôi jpg hoặc png, …
-    • conic-gradient: Thiết lập màu chuyển.
-    • linear-gradient: Thiết lập màu chuyển.
-linear-gradient
-Để thiết lập dạng màu chuyển.
-Cú pháp:
-background: linear-gradient(direction | angles, color1, color2, …);
+**Syn**
+```bash
+background-image: value;
 
-Trang web thiết kế dải màu linear-gradient đẹp mắt: https://webgradients.com/
-repeating-linear-gradient
-conic-gradient
-Là một dạng chuyển đổi màu xoay quanh một điểm trung tâm.
-Cú pháp: background-image: conic-gradient([fromangle] [at position,] color [degree], color [degree], ...);
-Tạo hình bàn cờ
-<body>
-    <div></div>
-  </body>
+- url(‘ ’): Truyền vào một link của hình ảnh đó đuôi jpg hoặc png, …
+- conic-gradient: Thiết lập màu chuyển.
+- linear-gradient: Thiết lập màu chuyển.
+```
 
- body{
-        background-image: repeating-conic-gradient(#5f0172 0 25%, #dfdb13 25% 50%);
-        background-size: 384px 383px;
-     }
-
-
-Radial Gradients
-Hiệu ứng màu chuyển lan tỏa ra tứ phía.
-Cú pháp: background | background-image: radial-gradient(shape, size, at position, start-color, ..., last-color);
-Lưu ý: Phải sử dụng đúng cấu trúc cú pháp trên.
-Shape
-Có 2 giá trị là ellipse (mặc định) và circle.
-<div>Circle</div>
-<div>Circle</div>
-
-div:nth-child(1){
-            width: 400px;
-            height: 200px;
-            background: radial-gradient(circle, #ff0000, #3399ff, #fffb00);
-}
-div:nth-child(2){
-            width: 400px;
-            height: 200px;
-            background: radial-gradient(ellipse, #ff0000, #3399ff, #fffb00);
-}
 background-repeat 
 Để Lặp hình nền hoặc không.
 background-repeat: value;
@@ -85,74 +46,65 @@ value:
     • no-repeat: Không lặp.
     • space-repeat: Lặp bỏ trống phần giữa theo chiều dọc.
     • round-space: Lặp bỏ trống phần giữa theo chiều ngang.
-Border 
-Để thiết lập đường viền cho phần tử. Là cách viết gộp của border-width, border-style, border-color.
-Cú pháp:
+# border 
+```bash
+- Để thiết lập đường viền cho phần tử. 
+- Là cách viết gộp của border-width, border-style, border-color.
+```
+**Syn**
+```bash
 border: border-width | border-style | border-color
-border-style
-Thiết lập kiểu viền cho khối bao quanh.
-Cú pháp:
+```
+**Ex**
+```html
+<div></div>
+```
+```css
+*{
+    box-sizing: border-box;
+}
+div{
+    width: 400px;
+    height: 400px;
+    background-color: #f00;
+    border-top: 200px solid #abab;
+    border-bottom: 200px solid transparent;
+    border-left: 100px solid #000;
+}
+```
+## border-style & Border-width & Border-color
+```bash
+- Thiết lập kiểu viền cho khối bao quanh.
+- Thiết lập độ rộng cho viền.
+- Thiết lập màu sắc cho viền.
+- Nếu có 4 giá trị (top, right, bottom, left).
+- Nếu có 3 giá trị (top, right-left, bottom).
+- Nếu có 2 giá trị (top-bottom, right-left).
+- Nếu có 1 giá trị (top-right-bottom-left).
+```
+**Syn: border-style**
+```bash
 Border-style: value;
-Value:
-       dotted: Border sẽ hiển thị là những dấu chấm.
-       dashed: Border sẽ hiển thị nét đứt.
-       solid: Border sẽ hiển thị đường thẳng liền mạch.
-       double: Border sẽ hiển thị 2 đường thẳng.
-       groove: Border sẽ hiển thị dạng rãnh 3D.
-       ridge: Border sẽ hiển thị dạng viền 3D.
-       inset: Border sẽ hiển thị dạng viền trong 3D. 
-       outset: Border sẽ hiển thị dạng viền đầu 3D. 
-       none: Sẽ không có border.
-       hidden: Border sẽ bị ẩn.
 
-Nếu border-style có 4 giá trị thì giá trị lần lượt của nó là top, right, bottom, left.
-Nếu border-style có 3 giá trị thì giá trị lần lượt của nó là top, right-left, bottom.
-Nếu border-style có 2 giá trị thì giá trị lần lượt của nó là top-bottom, right-left.
-Nếu border-style có 1 giá trị thì giá trị đó là top-right-bottom-left.
-border-top-style
-Thiết lập đường viền trên top.
-border-right-style
-Thiết lập đường viền bên phải.
-border-bottom-style
-Thiêt lập đường viền dưới.
-border-left-style
-Thiết lập đường viền bên trái.
-Border-width
-Thiết lập độ rộng cho viền.
-giá trị:
-    • number + đơn vị
-    • thin, medium, thick.
-Border-color
-Thiết lập màu sắc cho viền.
-    • Có 4 giá trị thì lần lượt thiết lập màu cho top, right, left, botttom.
-    • Có 3 giá trị thì lần lượt thiết lập màu cho top, right-left, bottom.
-    • Có 2 giá trị thì lần lượt thiết lập màu cho top-bottom, right-left.
-    • Có 1 giá trị thì thiết lập màu cho top-right-left-bottom.
-Ví dụ về border
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-        *{
-            box-sizing: border-box;
-        }
-        div{
-            width: 400px;
-            height: 400px;
-            background-color: #f00;
-            border-top: 200px solid #abab;
-            border-bottom: 200px solid transparent;
-            border-left: 100px solid #000;
-        }
-    </style>
-</head>
-<body>
-    <div></div>
-</body>
-</html>
+- dotted: Border sẽ hiển thị là những dấu chấm.
+- dashed: Border sẽ hiển thị nét đứt.
+- solid: Border sẽ hiển thị đường thẳng liền mạch.
+- double: Border sẽ hiển thị 2 đường thẳng.
+- groove: Border sẽ hiển thị dạng rãnh 3D.
+- ridge: Border sẽ hiển thị dạng viền 3D.
+- inset: Border sẽ hiển thị dạng viền trong 3D. 
+- outset: Border sẽ hiển thị dạng viền đầu 3D. 
+- none: Sẽ không có border.
+- hidden: Border sẽ bị ẩn.
+```
+## border-top-style & border-right-style & border-bottom-style & border-left-style
+```bash
+- Thiết lập đường viền trên top.
+- Thiết lập đường viền bên phải.
+- Thiêt lập đường viền dưới.
+- Thiết lập đường viền bên trái.
+```
+
 
 border-image
 Sử dụng hình ảnh làm đường viền của phần tử.
@@ -212,3 +164,54 @@ Góc dưới bên phải sẽ được uốn cong. Có thể truyền 1 hoặc 2
     • Adnjs
     • Boxicons.com
     • Ionicons
+outline-color
+Thiết lập màu sắc.
+outline-offset
+Thêm khoảng trắng vào giữa outline và border. Khoảng trắng là trong suốt.
+Text
+Text Color
+Thiết lập màu sắc cho chữ.
+Cú pháp:
+color: CSS colors;
+
+Text decoration
+Cú pháp:
+text-decoration: line | color | style | thickness;
+text-decoration-line
+Dùng để thiết lập một đường gạch cho văn bản.
+Cú pháp:
+text-decoration-line: none | underline | line-through | overline | initial | inherit;
+    • none: Không có đường gạch chân.
+    • underline: Tạo một đường gạch chân.
+    • overline: Tạo một đường gạch trên đầu văn bản.
+    • line-through: Tạo một đường gạch giữa văn bản.
+    • initial: Sử dụng giá trị mặc định.
+    • inherit: Kế thừa thuộc tính từ phần tử cha.
+text-decoration-color
+Để thiết lập màu sắc cho đường gạch chân. Sử dụng khi có khai báo text-decoration.
+Cú pháp:
+text-decoration-color: CSS colors | initial | inherit
+text-decoration-style
+Thiệt lập kiểu đường gạch.
+value:
+    • solid: Giá trị mặc định, đường gạch là đường nét liền thẳng.
+    • double: 2 đường thẳng song song với nhau.
+    • dotted: Đường thẳng chấm bi, nét đứt.
+    • dashed: Đường thẳng nét đứt.
+    • wavy: Đường sóng.
+    • initial: Lấy giá trị mặc định.
+    • inherit: Lấy giá trị giống phần tử cha.
+text-decoration-thickness
+Để thiết lập độ dày cho đường gạch.
+value:
+    • auto: Chọn độ dày dựa vào trình duyệt
+    • from-font: Nếu tệp font chữ chứa thông tin về độ dày, thì sử dụng giá trị đó, nếu không thì có chức năng giống auto
+    • length/percetage: Chỉ định độ dày theo chiều dài hoặc %
+    • initial: Lấy giá trị mặc định
+    • inherit: Lấy giá trị giống phần tử cha
+text-overflow
+Text-overflow chỉ hoạt động hay thực thi khi ta thiết lập thuộc tính white-space: nowrap và thiết lập overflow: hidden.
+Cú pháp:
+text-overflow: clip | ellipsis;
+    • Clip: Nội dung tràn ra sẽ bị cắt bỏ không hiển thị.
+    • Elipsis: Nội dung tràn bị ẩn và tự thêm vào dấu ba chấm …
