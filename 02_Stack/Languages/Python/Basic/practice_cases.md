@@ -1,6 +1,7 @@
 - [Quản lý sự kiện](#quản-lý-sự-kiện)
 - [Hóa Đơn bán hàng](#hóa-đơn-bán-hàng)
 - [Quản lý phiếu nhập hàng](#quản-lý-phiếu-nhập-hàng)
+- [Sơ đồ lớp (cầu thủ - người - câu lạc bộ)](#sơ-đồ-lớp-cầu-thủ---người---câu-lạc-bộ)
 ---
 # Quản lý sự kiện
 ```bash
@@ -239,11 +240,25 @@ class Mobi(Item):
         
 class Items:
     def __init__(self):
-        self.items = []
+        self.items = [
+            Tivi('TiVi', 30, 2),
+            Fan("Quạt", 1.2, 3)
+        ]
     
     def add_item(self, item: Item):
         self.items.append(item)
     
+    def change(self, name = 'Quạt'):
+        for item in self.items:
+            if item.name == name:
+                item.quantity = 5
+    
+    def remove(self, name='TiVi'):
+        for i, item in enumerate(self.items):
+            if item.name == name:
+                self.items.pop(i)
+                break
+
     def sum_total(self):    
         return sum(i.total for i in self.items)
 
@@ -254,7 +269,7 @@ class GoodsReceipt:
         self.address = address
         self.date = date
         self.name_brand = name_brand
-        self.items = Items()
+        self.table_items = Items()
     
     def print_receipt(self):
         print('\nPHIẾU NHẬP HÀNG')
@@ -268,25 +283,16 @@ class GoodsReceipt:
         print(f"{'Tên hàng':<15} | {'Đơn giá':>6} | {'Số lượng':>12} | {'Thành tiền':>15}")
         print("-" * 56)
 
-        for i in self.items.items:
+        for i in self.table_items.items:
             print(f"{i.name:<15} | {i.price:>6} | {i.quantity:>12.2f} | {i.total:>15.2f}")
 
         print("-"*56)
-        print("Tổng tiền:", self.items.sum_total())
+        print("Tổng tiền:", self.table_items.sum_total())
 
 def print_tax(t: Tax):
     print(t.tax())
 
-if __name__ == "__main__":
-    tivi = Tivi('TiVi', 30, 2)
-    fan = Fan("Quạt", 1.2, 3)
-    mobi = Mobi("Mobi", 5, 10)
-    li = [tivi, fan, mobi]
-
-    print_tax(tivi)
-    print_tax(fan)
-    print_tax(mobi)   
-    
+if __name__ == "__main__": 
     receipt = GoodsReceipt(
         'PH001', 
         'NCC1', 
@@ -294,10 +300,22 @@ if __name__ == "__main__":
         '1/1/2007', 
         'LG-Electronic'
     )
-
-    for item in li:
-        receipt.items.add_item(item)
     
+    print("Phiếu gốc")
+    receipt.print_receipt()
+
+    # thêm điện thoại vào phiếu
+    mobi = Mobi("Mobi", 5, 10)
+    receipt.table_items.add_item(mobi)
+    print("Phiếu mới khi thêm")
+    receipt.print_receipt()
+
+    # Tìm đến Quạt và đổi số lượng thành 5 nếu có
+    receipt.table_items.change()
+    receipt.print_receipt()
+
+    # xóa TiVi nếu có
+    receipt.table_items.remove()
     receipt.print_receipt()
 ```
 **Truyền thống**
@@ -394,4 +412,60 @@ if __name__ == "__main__":
     receipt.items.add_item(mobi)
 
     receipt.print_receipt()
+```
+# Sơ đồ lớp (cầu thủ - người - câu lạc bộ)
+```python
+class Person:
+    def __init__(self, name, age, country):
+        self.name = name
+        self.age = age
+        self.country = country
+
+
+class Player(Person):
+    def __init__(self, player_id, name, age, country, position, jersey_number):
+        super().__init__(name, age, country)
+        self.player_id = player_id
+        self.position = position
+        self.jersey_number = jersey_number
+        self.club = None          # Aggregation ◇
+
+    def __str__(self):
+        return (f"{self.player_id} | {self.name} | {self.age} | "
+                f"{self.country} | {self.position} | {self.jersey_number}")
+
+class Club:
+    def __init__(self, club_id, name):
+        self.club_id = club_id
+        self.name = name
+        self.players = []         # Aggregation ◇
+
+    def add_player(self, player: Player):
+        player.club = self
+        self.players.append(player)
+
+    def remove_player(self, player_id):
+        self.players = [p for p in self.players if p.player_id != player_id]
+
+    def show_players(self):
+        for p in self.players:
+            print(p)
+
+if __name__ == "__main__":
+    club = Club("C01", "Real Madrid")
+
+    n = int(input("Number of players: "))
+    for _ in range(n):
+        p = Player(
+            player_id=input("ID: "),
+            name=input("Name: "),
+            age=int(input("Age: ")),
+            country=input("Country: "),
+            position=input("Position: "),
+            jersey_number=int(input("Jersey number: "))
+        )
+        club.add_player(p)
+
+    print("\n--- Player List ---")
+    club.show_players()
 ```

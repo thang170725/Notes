@@ -26,6 +26,7 @@ engine = create_engine(
 - host	    localhost
 - port	    3306, 5432
 - database	test_db
+- echo      : True là bất chế độ log in ra các cấu SQL
 ```
 **Ex**
 ```python

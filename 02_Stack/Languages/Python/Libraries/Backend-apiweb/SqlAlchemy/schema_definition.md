@@ -1,3 +1,65 @@
+- [Column \& Data-type \& declarative\_base](#column--data-type--declarative_base)
+  - [So sánh giữa có và không có declarative\_base](#so-sánh-giữa-có-và-không-có-declarative_base)
+- [columns](#columns)
+---
+# Column & Data-type & declarative_base
+```bash
+- Column    : Định nghĩa cột trong bảng
+```
+**Syn: Column**
+```bash
+Column(
+    name,
+    type_,
+    primary_key=False,
+    nullable=True,
+    unique=False,
+    default=None,
+    index=False,
+    foreign_key=...
+)
+```
+**Data-type**
+```bash
+1. String
+2. Integer
+3. String
+```
+**declarative_base**
+## So sánh giữa có và không có declarative_base
+**Không có declarative_base**
+```python
+class User:
+    __tablename__ = "users"
+
+# SQLAlchemy sẽ coi đây là class Python bình thường
+```
+**Có declarative_base**
+```bash
+backend/
+├── base.py
+├── user.py
+```
+**base.py**
+```python
+from sqlalchemy.orm import declarative_base
+
+Base = declarative_base()
+```
+**user.py**
+```python
+from sqlalchemy import Column, Integer, String
+from backend.db.base import Base
+
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True)
+    username = Column(String(50))
+    password = Column(String(255))
+
+# User class  <=>  users table
+```
 # columns
 **Ex**
 ```python

@@ -4,6 +4,7 @@
 - [free](#free)
 - [df](#df)
 - [sudo apt clean](#sudo-apt-clean)
+- [sudo apt autoclean](#sudo-apt-autoclean)
 - [Mount ổ cứng](#mount-ổ-cứng)
 ---
 # clear
@@ -38,11 +39,13 @@ Xem dung lượng còn lại của ổ, -h là để hiển thị theo đơn v�
 ```
 
 # sudo apt clean
+```bash
 Xóa toàn bộ file .deb đã tải
-
-sudo apt autoclean
+```
+# sudo apt autoclean
+```bash
 Chỉ xóa các gói cũ, không còn dùng.
-
+```
 2️⃣ Xóa package không còn cần thiết
 bash
 Copy code

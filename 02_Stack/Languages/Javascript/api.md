@@ -44,6 +44,132 @@ fetch('http://localhost:5000/api', {
 ```bash
 - fetch : Là một API dùng để gửi các yêu cầu HTTP (GET, POST, PUT, DELETE, …) đến server và xử lý kết quả trả về. 
 ```
+**Syn**
+```bash
+fetch("https://api.example.com/users", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({ name: "Thắng" }),
+})
+
+- method
+  + "GET" | "POST" | "PUT" | "PATCH" | "DELETE"
+  + Mặc định: "GET"
+  + Quyết định bạn đang làm gì với server
+- headers
+  + Là metadata của request → cho server biết: Dữ liệu kiểu gì
+  + Ai gửi
+  + Quyền hạn gì
+  + Header là key – value (string)
+- body
+  + Dữ liệu gửi lên server
+  + Chỉ dùng với POST / PUT / PATCH. Không dùng với GET (chuẩn REST)
+
+4. credentials
+credentials: "include"
+
+Giá trị	Ý nghĩa
+"omit"	Không gửi cookie
+"same-origin"	Chỉ gửi cookie cùng domain
+"include"	Luôn gửi cookie
+
+📌 Dùng khi:
+
+login bằng cookie
+
+session-based auth
+
+5. mode
+mode: "cors"
+
+Giá trị	Khi nào
+"cors"	Gọi API khác domain
+"same-origin"	Cùng domain
+"no-cors"	Gần như không dùng
+6. cache
+cache: "no-cache"
+
+
+Điều khiển cache của browser
+
+7. signal (huỷ request)
+const controller = new AbortController()
+
+fetch(url, {
+  signal: controller.signal
+})
+
+controller.abort()
+
+
+👉 Dùng khi:
+
+user rời trang
+
+search realtime
+
+5️⃣ Xử lý response từ fetch
+const response = await fetch(url)
+
+response có gì?
+Thuộc tính	Ý nghĩa
+response.ok	status 200–299
+response.status	HTTP status
+response.headers	headers trả về
+Đọc body response
+JSON
+const data = await response.json()
+
+Text
+const text = await response.text()
+
+6️⃣ Ví dụ THỰC TẾ HOÀN CHỈNH
+async function login(username, password) {
+  const response = await fetch("/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ username, password }),
+  })
+
+  if (!response.ok) {
+    throw new Error("Login failed")
+  }
+
+  return response.json()
+}
+
+7️⃣ Những lỗi người mới hay gặp ⚠️
+❌ Quên JSON.stringify
+body: { username, password } // SAI
+
+❌ Gửi body với GET
+fetch("/users", { body: "{}" }) // SAI
+
+❌ Quên check response.ok
+await response.json() // có thể crash
+
+8️⃣ Nếu bạn chỉ nhớ 3 điều
+
+1️⃣ fetch(url, options)
+2️⃣ method + headers + body là 3 cái quan trọng nhất
+3️⃣ fetch KHÔNG tự báo lỗi HTTP
+
+Nếu bạn muốn, mình có thể:
+
+🧠 Vẽ sơ đồ request–response
+
+🔥 So sánh fetch vs axios
+
+🧪 Viết wrapper fetch chuẩn production
+
+⚠️ Chỉ ra bug thường gặp khi dùng fetch
+
+Bạn muốn tiếp hướng nào?
+```
 ## GET data JSON bằng async + fetch
 ```js
 async function getUsers() {

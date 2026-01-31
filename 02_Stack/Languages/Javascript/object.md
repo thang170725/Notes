@@ -1,4 +1,6 @@
 - [Objects](#objects)
+  - [. \& \[\]](#--)
+  - [delete](#delete)
 ---
 # Objects
 ```bash
@@ -21,13 +23,10 @@ Dùng để thêm key-value hoặc lấy ra value.
 - <name>[‘key’] = value;
 - <name>[“key”] = value;
 ```
-Lấy value
-Dùng để lấy giá trị của một key nào đó.
-Cú pháp:
-    • <name>.key;
-    • <name>[‘key’];
-Xóa thuộc tính trong Object
+## delete
+```bash
 Để xóa một key ra khỏi Object.
+```
 Cú pháp:
     • delete <name>.key;
     • delete <name>[‘key’];

@@ -2,6 +2,7 @@
   - [Tạo hàm tính tổng 2 số](#tạo-hàm-tính-tổng-2-số)
 - [Tạo một giao diện tính tổng 2 số](#tạo-một-giao-diện-tính-tổng-2-số)
 - [map()](#map)
+- [Spread Operator (...)](#spread-operator-)
 ---
 # functions
 ```bash

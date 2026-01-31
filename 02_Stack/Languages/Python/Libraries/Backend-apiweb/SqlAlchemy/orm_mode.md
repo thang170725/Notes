@@ -5,41 +5,10 @@
 - [like()](#like)
 - [filter\_by()](#filter_by)
 ---
-# declarative_base & Column & Data-type
-**Không có declarative_base**
-```python
-class User:
-    __tablename__ = "users"
-
-# SQLAlchemy sẽ coi đây là class Python bình thường
-```
-**Có declarative_base**
-```bash
-backend/
-├── base.py
-├── user.py
-```
-**base.py**
-```python
-from sqlalchemy.orm import declarative_base
-
-Base = declarative_base()
-```
-**user.py**
-```python
-from sqlalchemy import Column, Integer, String
-from backend.db.base import Base
-
-class User(Base):
-    __tablename__ = "users"
-
-    id = Column(Integer, primary_key=True)
-    username = Column(String(50))
-    password = Column(String(255))
-
-# User class  <=>  users table
-```
 # sessionmaker()
+```bash
+- Tạo "nhà máy" sinh ra các session, nơi bạn làm việc với db bằng ORM
+- Không thể làm việc trực tiếp db bằng ORM nếu không có Session
 **Syn**
 ```bash
 from sqlalchemy.orm import sessionmaker
@@ -69,8 +38,10 @@ SessionLocal = sessionmaker(
     autocommit=False,
     autoflush=False,
 )
-```
+session = SessionLocal()
 
+# mỗi lần gọi SessionLocal() là tạo một session mới
+```
 # .add() & .commit() & refresh()
 ```bash
 - add       : đưa object vào session chưa ghi xuống db.
