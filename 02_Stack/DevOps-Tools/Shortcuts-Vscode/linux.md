@@ -19,7 +19,7 @@
 9.  Ctrl + H            : Tìm và thay thế chữ.
 10. Ctrl + N            : Tạo một tài liệu mới.
 11. Ctrl + O            : Mở một file.
-12. Ctrl + P            :  Đi đến một file khác.
+12. Ctrl + P            : Đi đến một file khác.
 13. Ctrl + S            : Lưu file.
 14. Ctrl + V            : paste file.
 15. Ctrl + X            : Cắt một đoạn chữ (cắt theo từng dòng).
@@ -28,6 +28,6 @@
 18. Ctrl + Home         : Đưa con trỏ lên đầu của file hiện tại.
 19. Ctrl + End          : Đưa con trỏ xuống cuối của file hiện tại. 
 20. Ctrl + →            : Con trỏ sang đúng bằng một chữ.
-21. Ctrl + ←            :  Đưa con trỏ sang trái đúng bằng một chữ.
+21. Ctrl + ←            : Đưa con trỏ sang trái đúng bằng một chữ.
 22. Ctrl + shift + I    : Sắp xếp các dòng lệnh cho đẹp mắt, dễ nhìn.
 ```

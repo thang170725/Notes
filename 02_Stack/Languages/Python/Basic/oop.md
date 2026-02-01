@@ -1,19 +1,27 @@
-- [function](#function)
-  - [\*args](#args)
-  - [\*\*kwargs](#kwargs)
-  - [lambda](#lambda)
-- [nonlocal](#nonlocal)
-- [global](#global)
 - [class](#class)
-  - [Del](#del)
-  - [__init__() \& __str__() \& __len__()](#init--str--len)
   - [__dict__](#dict)
+- [__init__() \& __str__() \& __len__()](#init--str--len)
+  - [__mro__](#mro)
   - [__call__()](#call)
   - [__getitem__()](#getitem)
   - [__add__() \& __sub__() \& __mul__() \& __truediv__()](#add--sub--mul--truediv)
-  - [__iadd()__](#iadd)
+  - [__iadd()__ \& __isub__() \& __imul__() \& __itruediv__() __iffloordiv__ \& __imod__() \& __ipow__()](#iadd--isub--imul--itruediv-iffloordiv--imod--ipow)
   - [__lt__() \& __gt__() \& __eq__() \& __ne__() \& __le__() \& __ge__()](#lt--gt--eq--ne--le--ge)
   - [__neg__()](#neg)
+  - [setattr() \& __setattr__()](#setattr--setattr)
+  - [Del](#del)
+  - [__pos__() \& __abs__() \& __invert__()](#pos--abs--invert)
+  - [__floordiv__() \& __mod__() \&  __divmod__()](#floordiv--mod---divmod)
+  - [a.__lshift__(b)](#alshiftb)
+  - [__radd__() \& __rsub__() __rmul__()](#radd--rsub-rmul)
+  - [\_rtruediv() \& rfloordiv \& rmod() \& __rpow__()](#_rtruediv--rfloordiv--rmod--rpow)
+  - [__bool__](#bool)
+  - [__setitem__() \& delitem\_\_() \& __contains__()](#setitem--delitem__--contains)
+  - [__iter__() \& __next__()](#iter--next)
+  - [__enter__() \& exit()](#enter--exit)
+  - [__get__() \& __set__() \& __delete()__](#get--set--delete)
+  - [__set\_name__()](#set_name)
+  - [@property](#property)
   - [@classmethod](#classmethod)
     - [Quản lý kết nối Database (Mô phỏng)](#quản-lý-kết-nối-database-mô-phỏng)
   - [Inheritance (Kế thừa)](#inheritance-kế-thừa)
@@ -21,82 +29,6 @@
   - [duck typing (Python-style)](#duck-typing-python-style)
 - [callable()](#callable)
 ---
-# function
-## *args
-```bash
-- Hàm sẽ nhận được một bộ đối số và có thể truy cập theo list.
-```
-**Ex**
-```python
-def my_function(*kids):
-  print("The youngest child is " + kids[2])
-my_function("Emil", "Tobias", "Linus") # The youngest child is Linus
-```
-## **kwargs
-```bash
-- Hàm sẽ nhận được một từ điển đối số và có thể truy cập được vào các mục tương ứng.
-```
-**Ex**
-```python
-def my_function(**kid):
-  print("His last name is " + kid["lname"])
-my_function(fname = "Tobias", lname = "Refsnes") # His last name is Refsnes
-```
-## lambda
-```bash
-Là một hàm ẩn danh nhỏ.
-```
-**Syn** 
-```bash
-lambda arguments : expression
-```
-**Ex**
-```python
-def myfunc(n):
-  return lambda a : a * n
-  
-mydoubler = myfunc(2)
-mytripler = myfunc(3)
-print(mydoubler(11)) # 22
-print(mytripler(11)) # 33
-```
-# nonlocal
-**Ex**
-```python
-def outer():
-    x = 10
-
-    def inner():
-        nonlocal x
-        x += 1
-        print(x)
-
-    inner()
-```
-
-# global
-**Ex1: Không dùng global**
-```python
-count = 0
-
-def increase():
-    count += 1
-
-increase() # lỗi
-print(count)
-```
-**Ex2: Dùng global**
-```python
-count = 0
-
-def increase():
-    global count
-    count += 1
-
-increase() 
-print(count) # 1
-```
-# class
 ```bash
 - Nơi chứa các phương pháp xử lý trong lớp.
 - Class có 5 tiêu chí:
@@ -108,16 +40,7 @@ print(count) # 1
     6. Duck typing (Python-style)
     7. Protocol (hiện đại) - Giống interface trong Java
 ```
-**Cú pháp**
-```bash
-class Car(object):
-	Def __init__(self, make, model, year):
-	--snip—
-class ElectricCar(Car):
-	def __init__(self, make, model, year):
-		super(ElectricCar, self).__init__(make, model,  year)
-	--snip—
-```
+# class
 **Ex**
 ```python
 class Person:
@@ -131,34 +54,42 @@ class Student(Person):
 x = Student("Mike", "Olsen")
 x.printname() # Mike Olsen
 ```
-## Del
-Để xóa 1 thuộc tính ra khỏi lớp Object.
-**Ex**
-```python
-class Person:
-  def __init__(self, name, age):
-    self.name = name
-    self.age = age
-  def myfunc(self):
-    print("Hello my name is " + self.name)
-p1 = Person("John", 36)
-del p1.age
-print(p1.age) # sẽ báo lỗi
+## __dict__
+```bash
+- Là nơi Python lưu tất cả thuộc tính của object hoặc class
+- Nó là dictionary thật sự, không phải khái niệm trừu tượng.
 ```
-**Ex**
+**Ex1: lấy các thuộc tính trong class**
 ```python
-class Person:
-    def __init__(self, name):
+class User:
+    def __init__(self, name, age):
         self.name = name
+        self.age = age
 
-    def __eq__(self, other):
-        return self.name == other.name
-
-p1 = Person("An")
-p2 = Person("An")
-print(p1 == p2)  # True
+    def calc_age(self):
+        pass
+    
+    def calc_salary(self):
+        pass
+u = User("An", 20)
+print(u.__dict__) # {'name': 'An', 'age': 20}
+print(User.__dict__) # {'__module__': '__main__', '__init__': <function User.__init__ at 0x7a9eec38ac20>, 'calc_age': <function User.calc_age at 0x7a9eec38bac0>, 'calc_salary': <function User.calc_salary at 0x7a9eec38bd00>, '__dict__': <attribute '__dict__' of 'User' objects>, '__weakref__': <attribute '__weakref__' of 'User' objects>, '__doc__': None}
 ```
-## __init__() & __str__() & __len__()	
+**Ex2: Lấy các phương thức trong class**
+```python
+class User:
+    def __init__(self):
+        ...
+
+    def get_name(self):
+        ...
+    def set_name(self):
+        ...
+
+func_names = [name for name, obj in User.__dict__.items() if callable(obj)]
+print(func_names) # ['__init__', 'get_name', 'set_name']
+```
+# __init__() & __str__() & __len__()	
 ```bash
 - __init__  : Là hàm định dạng cho một class.
 - __str__   : Dữ liệu trả về khi đối tượng được gọi.
@@ -182,35 +113,7 @@ p = Person("John", 36)
 print(p)
 print(len(p))
 ```
-## __dict__
-```bash
-- __dict__ là nơi Python lưu tất cả thuộc tính của object hoặc class
-- Nó là dictionary thật sự, không phải khái niệm trừu tượng.
-```
-**Ex1: lấy các thuộc tính trong class**
-```python
-class User:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-
-u = User("An", 20)
-print(u.__dict__) # {'name': 'An', 'age': 20}
-```
-**Ex2: Lấy các phương thức trong class**
-```python
-class User:
-    def __init__(self):
-        ...
-
-    def get_name(self):
-        ...
-    def set_name(self):
-        ...
-
-func_names = [name for name, obj in User.__dict__.items() if callable(obj)]
-print(func_names) # ['__init__', 'get_name', 'set_name']
-```
+## __mro__
 ## __call__()
 ```bash
 - __call__ : Toán tử gọi object như hàm
@@ -289,7 +192,7 @@ print(a-b) # -0.07
 print(a*b) # 0.40
 print(a/b) # 0.90
 ```
-## __iadd()__
+## __iadd()__ & __isub__() & __imul__() & __itruediv__() __iffloordiv__ & __imod__() & __ipow__()
 **Ex**
 ```python
 def __iadd__(self, other):
@@ -338,7 +241,255 @@ print(a < b)    # True
 print(a <= b)   # True
 print(a != b)   # True
 print(a == b)   # False
-```s
+```
+## __neg__()
+```bash
+- Để định nghĩa toán tử dấu trừ.
+```
+**Ex**
+```python
+class Point:
+    def __init__(self, x):
+        self.x = x
+
+    def __neg__(self):
+        return Point(-self.x)
+
+p = Point(10)
+q = -p
+
+print(p.x)  # 10
+print(q.x)  # -10
+```
+## setattr() & __setattr__() 
+```bash
+- Để gán (hoặc tạo mới) thuộc tính cho object bằng tên động (string). Nó rất hay dùng khi viết code linh hoạt, meta-programming, hoặc xử lý dữ liệu động.
+- khi gọi setattr(obj, "x", 5) python thực chất gọi obj __setattr__("x", 5)
+```
+**Syn**
+```bash
+setattr(object, name, value)
+
+- object    : đối tượng cần gán thuộc tính
+- name	    : tên thuộc tính (chuỗi)
+- value	    : giá trị muốn gán
+
+- Tương đương với: object.name = value. nhưng name có thể là biến, không cần cố định.
+```
+**Ex1: setattr**
+```python
+class Person:
+    pass
+
+p = Person()
+
+setattr(p, "name", "An")
+setattr(p, "age", 20)
+
+print(p.name)  # An
+print(p.age)   # 20
+
+# Nếu thuộc tính chưa tồn tại → Python tạo mới
+# Nếu đã tồn tại → Python ghi đè
+```
+**Ex2: setattr & __setattr__**
+```python
+class A:
+    def __setattr__(self, name, value):
+        print(f"Gán {name} = {value}")
+        super().__setattr__(name, value)
+
+a = A()
+setattr(a, "x", 10)
+
+Gán x = 10
+```
+## Del
+Để xóa 1 thuộc tính ra khỏi lớp Object.
+**Ex**
+```python
+class Person:
+  def __init__(self, name, age):
+    self.name = name
+    self.age = age
+  def myfunc(self):
+    print("Hello my name is " + self.name)
+p1 = Person("John", 36)
+del p1.age
+print(p1.age) # sẽ báo lỗi
+```
+**Ex**
+```python
+class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def __eq__(self, other):
+        return self.name == other.name
+
+p1 = Person("An")
+p2 = Person("An")
+print(p1 == p2)  # True
+```
+## __pos__() & __abs__() & __invert__()
+## __floordiv__() & __mod__() &  __divmod__()
+```bash
+- __floordiv    : //
+- __mod__       : %
+```
+**Ex**
+```python
+class Candies:
+    def __init__(self, total):
+        self.total = total
+
+    def __floordiv__(self, people):
+        # mỗi người được bao nhiêu viên
+        return self.total // people
+
+    def __mod__(self, people):
+        # còn dư bao nhiêu viên
+        return self.total % people
+
+    def __divmod__(self, people):
+        # trả về (mỗi người, dư)
+        return (self.total // people, self.total % people)
+
+c = Candies(17)
+
+print(c // 5)          # 3
+print(c % 5)           # 2
+print(divmod(c, 5))    # (3, 2)
+```
+## a.__lshift__(b)
+Dịch bit sang phải a >> b a.__rshift__(b)
+Phép AND a & b a.__and__(b)
+Phép OR a | b a.__or__(b)
+Phép XOR a ^ b a.__xor__(b)
+Phép NOT ~a a.__invert__()
+## __radd__() & __rsub__() __rmul__()
+## _rtruediv() & rfloordiv & rmod() & __rpow__()
+## __bool__
+## __setitem__() & delitem__() & __contains__()
+## __iter__() & __next__()
+```bash
+- __iter__  : chuẩn bị để lặp, trả về iterator
+- __next__  : lấy phần tử kế tiếp
+```
+**Ex: Đếm số từ 1 đến 3**
+```python
+ class Counter:
+    def __init__(self, max_value):
+        self.max_value = max_value
+        self.current = 0
+
+    def __iter__(self):
+        return self   # chính object này là iterator
+
+    def __next__(self):
+        if self.current >= self.max_value:
+            raise StopIteration
+        self.current += 1
+        return self.current
+
+c = Counter(3)
+
+for x in c:
+    print(x)
+
+# 1
+# 2
+# 3
+```
+## __enter__() & exit()
+__getattr__()     # khi attribute không tồn tại
+__getattribute__()# mọi lần truy cập attribute    
+__delattr__()
+__int__()     # int(obj)
+__float__()   # float(obj)
+__complex__() # complex(obj)
+__index__()   # dùng trong slicing
+__new__()     # tạo instance (trước __init__)
+__del__()     # destructor
+__hash__()    # dùng làm key dict / set
+__hash__()    # dùng làm key dict / set
+__class__
+__slots__
+__sizeof__()
+__dir__()
+## __get__() & __set__() & __delete()__
+**Syn**
+```bash
+class Descriptor:
+    def __get__(self, instance, owner):
+        ...
+
+    def __set__(self, instance, value):
+        ...
+
+    def __delete__(self, instance):
+        ...
+
+- instance	: object đang truy cập (vd: obj)
+- owner	    : class chứa descriptor
+- value	    : giá trị gán
+```
+**Ex: giới hạn tuổi >= 0**
+```python
+class PositiveInt:
+    def __get__(self, instance, owner):
+        return instance.__dict__.get("_age", 0)
+
+    def __set__(self, instance, value):
+        if value < 0:
+            raise ValueError("Age phải >= 0")
+        instance.__dict__["_age"] = value
+
+    def __delete__(self, instance):
+        del instance.__dict__["_age"]
+
+class Person:
+    age = PositiveInt()
+
+p = Person()
+
+p.age = 20
+print(p.age)     # 20
+
+p.age = -5       # ValueError
+
+```
+## __set_name__()
+```bash 
+- Được Python gọi khi class được tạo
+- Dùng để descriptor biết tên attribute nó gắn vào
+```
+Ví dụ:
+class PositiveInt:
+    def __set_name__(self, owner, name):
+        self.private_name = "_" + name
+
+    def __get__(self, instance, owner):
+        return instance.__dict__.get(self.private_name, 0)
+
+    def __set__(self, instance, value):
+        if value < 0:
+            raise ValueError("Phải >= 0")
+        instance.__dict__[self.private_name] = value
+
+Dùng:
+class Person:
+    age = PositiveInt()
+    score = PositiveInt()
+
+
+📌 Lúc này:
+
+age → lưu vào _age
+
+score → lưu vào _score
+
+Không cần hard-code _age nữa 👍
 ## @property
 **Ex**
 ```python
@@ -349,7 +500,6 @@ class User:
 u = User()
 print(u.great) # hello, python
 ```
-## __neg__()
 ## @classmethod
 **Ex**
 ```python
